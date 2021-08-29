@@ -1,4 +1,4 @@
-package com.taller1.TP1_1;
+package modelo;
 
 public class BeerHouse {
 	public void abrirLocal(int cantMesas) {
