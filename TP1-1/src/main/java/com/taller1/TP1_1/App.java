@@ -1,7 +1,7 @@
 package com.taller1.TP1_1;
 
 /**
- * Hello world!
+ * 
  *
  */
 public class App 
