@@ -30,7 +30,7 @@ public class BeerHouse {
 		assert nroMesa >= 1 : "nroMesa invalido";
 		assert mesas[nroMesa].estado == "O" : "la mesa no esta ocupada"
 		
-		importe = mesas[nroMesa].importe;
+		float importe = mesas[nroMesa].importe;
 		mesas[nroMesa].estado = "L";
 		
 		assert importe == mesas[nroMesa].importe : "fallo postcondición";
