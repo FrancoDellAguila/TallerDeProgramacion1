@@ -18,7 +18,7 @@ public class Negocio
 			if (nroMesa>1)
 				BeerHouse.cerrarMesa(nroMesa);
 			else
-				//syso
+				system.out.prin
 		}catch{
 			//exep
 		}	
