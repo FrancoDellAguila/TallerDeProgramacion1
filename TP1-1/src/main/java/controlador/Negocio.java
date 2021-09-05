@@ -7,7 +7,7 @@ public class Negocio
 			if (cantMesas>1)
 				BeerHouse.abrirLocal(cantMesas);
 			else
-				
+				System.out.println("se necesitan mas mesas para abrir");
 		}catch(errorExeption e){
 			
 		}
@@ -18,7 +18,7 @@ public class Negocio
 			if (nroMesa>1)
 				BeerHouse.cerrarMesa(nroMesa);
 			else
-				//syso
+				System.out.println("el numero de mesa no existe");
 		}catch(errorExeption e){
 			//exep
 		}	
@@ -29,7 +29,7 @@ public class Negocio
 			if (nroMesa>1)
 				BeerHouse.ocuparMesa(nroMesa);
 			else
-				
+				System.out.println("el numero de mesa no existe");
 		}catch(errorExeption e){
 			
 		}	
