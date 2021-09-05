@@ -2,6 +2,7 @@ package surtidoDeCombustible;
 
 public class Surtidor {
     private float cantidadCombustible;
+    private Manguera manguera1= new Manguera(),manguera2= new Manguera();
 
 
 
