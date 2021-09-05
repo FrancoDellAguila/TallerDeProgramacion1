@@ -7,9 +7,9 @@ public class Negocio
 			if (cantMesas>1)
 				BeerHouse.abrirLocal(cantMesas);
 			else
-				//syso
-		}catch{
-			//exep
+				
+		}catch(errorExeption e){
+			
 		}
 	}
 	
@@ -18,8 +18,8 @@ public class Negocio
 			if (nroMesa>1)
 				BeerHouse.cerrarMesa(nroMesa);
 			else
-				system.out.prin
-		}catch{
+				//syso
+		}catch(errorExeption e){
 			//exep
 		}	
 	}
@@ -29,9 +29,9 @@ public class Negocio
 			if (nroMesa>1)
 				BeerHouse.ocuparMesa(nroMesa);
 			else
-				//syso
-		}catch{
-			//exep
+				
+		}catch(errorExeption e){
+			
 		}	
 	}
 }
