@@ -16,7 +16,7 @@ public class Certificado {
 	private boolean existeLegajo=false;
 	
 	/**
-	 * <b>PRE:<\b> el legajo debe ser un numero de 4 digitos. 
+	 * <b>PRE:<\b> el legajo debe ser un numero de 4 digitos. .....
 	 * @param legajo: numero entero de 4 digitos
 	 * @return true si se encontro el legajo o false en caso contrario
 	 */
