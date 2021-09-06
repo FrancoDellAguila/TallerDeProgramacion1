@@ -54,5 +54,9 @@ public class Juego {
 	public String traerEstado() {
 		return this.estado;
 	}
+
+	public String getEstado() {
+		return estado;
+	}
 	
 }

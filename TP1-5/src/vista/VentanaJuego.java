@@ -15,12 +15,14 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class VentanaJuego extends JFrame {
+public class VentanaJuego extends JFrame implements IVentanaJuego{
 
 	private JPanel contentPane;
 	private JTextField textAdivina;
 	private JTextField textResultado;
 	private Monitor controladorJuego;
+	private JButton btnAdivina;
+	private JButton btnJuegoNuevo;
 
 	/**
 	 * Launch the application.
@@ -77,10 +79,10 @@ public class VentanaJuego extends JFrame {
 		JPanel panel_4 = new JPanel();
 		contentPane.add(panel_4);
 		
-		JButton btnAdivina = new JButton("Adivina");
+		btnAdivina = new JButton("Adivina");
 		panel_4.add(btnAdivina);
 		
-		JButton btnJuegoNuevo = new JButton("Juego Nuevo");
+		btnJuegoNuevo = new JButton("Juego Nuevo");
 		panel_4.add(btnJuegoNuevo);
 		
 		JPanel panel_5 = new JPanel();
@@ -91,6 +93,42 @@ public class VentanaJuego extends JFrame {
 		
 		JPanel panel_7 = new JPanel();
 		contentPane.add(panel_7);
+	}
+
+	@Override
+	public void arranca() {
+		// TODO Auto-generated method stub
+		pack();
+		setLocationRelativeTo(null);
+		setVisible(true);
+	}
+
+	@Override
+	public void setControlador(Monitor m) {
+		// TODO Auto-generated method stub
+		btnAdivina.addActionListener(m);
+		btnJuegoNuevo.addActionListener(m);
+		this.controladorJuego = m;
+	}
+
+	@Override
+	public void escribeEstado(String s) {
+		// TODO Auto-generated method stub
+		textResultado.setText(s);
+	}
+
+	@Override
+	public void limpia() {
+		// TODO Auto-generated method stub
+		this.textAdivina.setText(null);
+		this.textResultado.setText(null);
+	}
+
+	@Override
+	public int getNumAdivina() {
+		// TODO Auto-generated method stub
+		int num = Integer.parseInt(textAdivina.getText());
+		return num;
 	}
 
 }
