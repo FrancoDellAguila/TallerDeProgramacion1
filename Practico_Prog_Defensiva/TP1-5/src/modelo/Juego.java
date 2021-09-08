@@ -11,7 +11,7 @@ public class Juego {
 	}
 	
 	public void probar(int num) {
-		
+		verificarInvariante();
 		this.cantint++;
 		
 		if (this.cantint < 10) {
@@ -53,6 +53,15 @@ public class Juego {
 	
 	public String traerEstado() {
 		return this.estado;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+	
+	private void verificarInvariante() {
+		assert (this.numeroadivinanza >0 && this.numeroadivinanza <= 100);
+		assert (this.estado != "perdiste" || this.estado != "Ganaste");
 	}
 	
 }
