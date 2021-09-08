@@ -10,28 +10,40 @@ public class Juego {
 		this.setCantint(0);
 	}
 	
-	public void probar(int num) {
+	public void probar(int num) throws NumeroNoValidoException{
 		verificarInvariante();
 		this.cantint++;
-		
-		if (this.cantint < 10) {
-			if (num < this.numeroadivinanza) {
-				this.estado = "Bajo";
+		if (num == (int)num) {
+			if (this.cantint < 10) {
+				if (num < this.numeroadivinanza) {
+					this.estado = "Bajo";
+				}else {
+					if (num > this.numeroadivinanza) {
+						this.estado = "Alto";
+					}else
+						this.estado = "Acerto";
+				}
 			}else {
-				if (num > this.numeroadivinanza) {
-					this.estado = "Alto";
-				}else
-					this.estado = "Acerto";
+				if (this.cantint == 10) {
+					if (num == this.numeroadivinanza) {
+						this.estado = "Ganaste";
+					}else
+						this.estado = "perdiste";
+				}
 			}
-		}else {
-			if (this.cantint == 10) {
-				if (num == this.numeroadivinanza) {
-					this.estado = "Ganaste";
-				}else
-					this.estado = "perdiste";
-			}
+			verificarPostcondiciones(num);
+		}
+		else {
+			throw new NumeroNoValidoException();
 		}
 	}
+	private void verificarPostcondiciones(int num) {
+		// TODO Auto-generated method stub
+		assert (this.estado == "Ganaste" && this.numeroadivinanza == num):"No ganaste";
+		assert (this.estado == "Perdiste" && this.numeroadivinanza != num);
+		
+	}
+
 	/*
 	public int getCantint() {
 		return cantint;
@@ -62,6 +74,10 @@ public class Juego {
 	private void verificarInvariante() {
 		assert (this.numeroadivinanza >0 && this.numeroadivinanza <= 100);
 		assert (this.estado != "perdiste" || this.estado != "Ganaste");
+	}
+
+	public int getCantint() {
+		return cantint;
 	}
 	
 }

@@ -23,6 +23,7 @@ public class VentanaJuego extends JFrame implements IVentanaJuego{
 	private Monitor controladorJuego;
 	private JButton btnAdivina;
 	private JButton btnJuegoNuevo;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -53,6 +54,15 @@ public class VentanaJuego extends JFrame implements IVentanaJuego{
 		
 		JPanel panel = new JPanel();
 		contentPane.add(panel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Numero de intentos");
+		panel.add(lblNewLabel_1);
+		
+		textField = new JTextField();
+		textField.setEnabled(false);
+		textField.setEditable(false);
+		textField.setColumns(10);
+		panel.add(textField);
 		
 		JLabel lblNewLabel = new JLabel("Juego adivinar");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -112,9 +122,10 @@ public class VentanaJuego extends JFrame implements IVentanaJuego{
 	}
 
 	@Override
-	public void escribeEstado(String s) {
+	public void escribeEstado(String s, int cantint) {
 		// TODO Auto-generated method stub
 		textResultado.setText(s);
+		this.textField.setText(cantint+"");
 	}
 
 	@Override
@@ -122,6 +133,7 @@ public class VentanaJuego extends JFrame implements IVentanaJuego{
 		// TODO Auto-generated method stub
 		this.textAdivina.setText(null);
 		this.textResultado.setText(null);
+		this.textField.setText("0");
 	}
 
 	@Override

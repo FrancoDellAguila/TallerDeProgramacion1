@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import modelo.Juego;
+import modelo.NumeroNoValidoException;
 import vista.IVentanaJuego;
 
 public class Monitor implements ActionListener{
@@ -21,8 +22,13 @@ public class Monitor implements ActionListener{
 			
 		}else if (e.getActionCommand().equals("Adivina")) {
 			
-			modelo.probar(vista.getNumAdivina());
-			vista.escribeEstado(modelo.getEstado());
+			try {
+				modelo.probar(vista.getNumAdivina());
+			} catch (NumeroNoValidoException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			vista.escribeEstado(modelo.getEstado(), modelo.getCantint());
 			
 		}
 	}

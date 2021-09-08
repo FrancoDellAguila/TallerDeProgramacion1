@@ -13,6 +13,7 @@ public class Main {
 			Monitor controlador = new Monitor(vista,modelo);
 			vista.setControlador(controlador);
 			vista.arranca();
+			vista.limpia();
 	}
 
 }
