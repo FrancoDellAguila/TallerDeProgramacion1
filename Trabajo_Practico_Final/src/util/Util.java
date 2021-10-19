@@ -2,9 +2,15 @@ package util;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.TreeSet;
 
 import modelo.Clinica;
-import persistencia.ClinicaDTO;
+import persistencia.FacturaDTO;
+import persistencia.MedicoDTO;
+import persistencia.PacienteDTO;
+import personas.Paciente;
+
+
 
 public class Util
 {
@@ -12,58 +18,43 @@ public class Util
     public static PacienteDTO pacienteDTOFromClinica() 
     {
 		PacienteDTO respuesta = new PacienteDTO();
-		//respuesta.setAsociados(Clinica.getInstance().getAsociados());
-		respuesta.setDireccion(Clinica.getInstance().getDireccion());
-		respuesta.setdNI();
-		respuesta.setNombre();
-		respuesta.setApellido();
-		respuesta.setCiudad();
-		respuesta.setTelefono();
-		respuesta.setDomicilio();
+		
+		respuesta.setPacientes(Clinica.getInstance().getPacientes().getPacientesBD());
+		
 		return respuesta;
     }
     
-    public static MedicoDTO medicoDTOFromPrueba() 
+    public static MedicoDTO medicoDTOFromClinica() 
     {
 		MedicoDTO respuesta = new MedicoDTO();
-		//respuesta.setAsociados(Clinica.getInstance().getAsociados());
-		respuesta.setDireccion(Prueba.getInstance().getDireccion());
+		
+		respuesta.setMedicos(Clinica.getInstance().getMedicos().getMedicosBD());
 		
 		return respuesta;
     }
     
     public static FacturaDTO facturaDTOFromClinica() 
     {
-		FacturaDTO respuesta=new FacturaDTO();
-		//respuesta.setAsociados(Clinica.getInstance().getAsociados());
-		respuesta.setDireccion(Clinica.getInstance().getDireccion());
+		FacturaDTO respuesta = new FacturaDTO();
+	
+		respuesta.setFacturas(Clinica.getInstance().getFacturas());
 		
 		return respuesta;
     }
     
-    public static void clinicaFromClinicaDTO(ClinicaDTO clinicaDTO) 
+
+    
+    public static void clinicaFromClinicaDTOs(PacienteDTO pacientesDTO, MedicoDTO medicosDTO, FacturaDTO facturaDTO) 
     {
     	//Clinica.getInstance().setAsociados(clinicaDTO.getAsociados());
-    	Clinica.getInstance().setDireccion(clinicaDTO.getDireccion());
+    	TreeSet<Paciente> aux1 = pacientesDTO.getPacientes();
     	
+    	Clinica.getInstance().setPacientes().setPacientesBD(aux1);
+    	Clinica.getInstance().setMedicos(setMedicosBD(medicosDTO.getMedicos()));
+    	Clinica.getInstance().setFacturas(facturaDTO.getFacturas());
 	
     }
     
-    public static void clinicaFromClinicaDTO(ClinicaDTO clinicaDTO) 
-    {
-    	//Clinica.getInstance().setAsociados(clinicaDTO.getAsociados());
-    	Clinica.getInstance().setDireccion(clinicaDTO.getDireccion());
-    	
-	
-    }
-    
-    public static void clinicaFromClinicaDTO(ClinicaDTO clinicaDTO) 
-    {
-    	//Clinica.getInstance().setAsociados(clinicaDTO.getAsociados());
-    	Clinica.getInstance().setDireccion(clinicaDTO.getDireccion());
-    	
-	
-    }
   
 	public static final Random r = new Random();
 
