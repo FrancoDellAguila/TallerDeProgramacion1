@@ -5,6 +5,7 @@ import modelo.IMedico;
 import modelo.MedicoFactory;
 import modelo.PacienteFactory;
 
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 import excepciones.ImposibleCrearMedicoException;
@@ -17,6 +18,7 @@ public class Prueba {
 		
 		
    
+		private ArrayList<IMedico> medicos = new ArrayList<IMedico>();
 		
 		Paciente paciente=null,paciente2=null,paciente3=null,paciente4=null;
 		//cuando copien y pegen para hacer mas pacientes recuerden cambiarles el DNI
@@ -34,8 +36,11 @@ public class Prueba {
         IMedico medico=null, medico2 =null,medico3=null;
         try {
 			 medico = MedicoFactory.getMedico("25900987","Luis","Montini","MDP","2234565","Independencia","1111","Cirujia","Permanente","Magister");
+			 medicos.add(medico);
 			 medico2 = MedicoFactory.getMedico("25980987","Luis","Montini","MDP","2234565","Independencia","2222","Clinica","Permanente","Doctor");
+			 medicos.add(medico2);
 			 medico3 = MedicoFactory.getMedico("2565657","Luis","Montini","MDP","2234565","Independencia","3333","Pediatria","Permanente","Magister");
+			 medicos.add(medico3);
 		} catch (ImposibleCrearMedicoException e) {
             System.out.println(e.getMessage()+e.getDato());
         }
