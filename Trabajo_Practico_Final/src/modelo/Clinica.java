@@ -54,6 +54,7 @@ public class Clinica {
      * @aggregation composite
      */
     private BDdePacientes pacientes = new BDdePacientes();
+    private BDdeMedicos medicos = new BDdeMedicos();
 	private int nroOrden=0;
 	
 	
@@ -170,6 +171,24 @@ public class Clinica {
 	}
 	public ArrayList<Paciente> getPatio() {
 		return patio;
+	}
+	public TreeSet<Factura> getFacturas() {
+		return facturas;
+	}
+	public void setFacturas(TreeSet<Factura> facturas) {
+		this.facturas = facturas;
+	}
+	public BDdePacientes getPacientes() {
+		return pacientes;
+	}
+	public void setPacientes(BDdePacientes pacientes) {
+		this.pacientes = pacientes;
+	}
+	public BDdeMedicos getMedicos() {
+		return medicos;
+	}
+	public void setMedicos(BDdeMedicos medicos) {
+		this.medicos = medicos;
 	}
 	
 					

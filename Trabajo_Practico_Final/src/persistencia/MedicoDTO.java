@@ -1,22 +1,27 @@
 package persistencia;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 
+import java.util.TreeSet;
+
+import modelo.BDdeMedicos;
 import modelo.IMedico;
+import personas.Paciente;
+
 
 /*Los profesionales que trabajen en la clínica deberán quedar registrados, tanto sus datos
 personales como su desempeño dentro de la clínica.*/
 
 public class MedicoDTO implements Serializable{
 	
-	private ArrayList<IMedico> medicos = new ArrayList<IMedico>();
+	private TreeSet<IMedico> medicosBD = new TreeSet<>();
 
-	public ArrayList<IMedico> getMedicos() {
-		return medicos;
+	public TreeSet<IMedico> getMedicos() {
+		return this.medicosBD;
 	}
 
-	public void setMedicos(ArrayList<IMedico> medicos) {
-		this.medicos = medicos;
+	public void setMedicos(TreeSet<IMedico> BDdeMedicos) {
+		this.medicosBD = BDdeMedicos;
 	}
 	
 	

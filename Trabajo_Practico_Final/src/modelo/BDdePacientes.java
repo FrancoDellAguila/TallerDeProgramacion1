@@ -33,4 +33,12 @@ public class BDdePacientes {
 		nuevo.setNumeroHistoria(generaNumHist);
 		this.pacientesBD.add(nuevo);
 	}
+
+	public TreeSet<Paciente> getPacientesBD() {
+		return pacientesBD;
+	}
+
+	public void setPacientesBD(TreeSet<Paciente> pacientesBD) {
+		this.pacientesBD = pacientesBD;
+	}
 }
