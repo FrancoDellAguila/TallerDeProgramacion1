@@ -1,27 +1,27 @@
 package modelo;
 
 import java.util.ArrayList;
-import java.util.TreeSet;
 
+import personas.Medico;
 
 public class BDdeMedicos {	
 
 
-    ArrayList<IMedico> medicosBD = new ArrayList<IMedico>();
+    ArrayList<Medico> medicosBD = new ArrayList<Medico>();
 
 	public BDdeMedicos() {
 
 	}
 	
-	public void agregarMedico(IMedico medico) {
+	public void agregarMedico(Medico medico) {
 		medicosBD.add(medico);
 	}
 
-	public ArrayList<IMedico> getMedicosBD() {
+	public ArrayList<Medico> getMedicosBD() {
 		return medicosBD;
 	}
 
-	public void setMedicosBD(ArrayList<IMedico> medicosBD) {
+	public void setMedicosBD(ArrayList<Medico> medicosBD) {
 		this.medicosBD = medicosBD;
 	}
 

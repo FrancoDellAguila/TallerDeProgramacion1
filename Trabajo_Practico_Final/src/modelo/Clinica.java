@@ -50,7 +50,7 @@ public class Clinica {
     /**
      * @aggregation composite
      */
-    private TreeSet<Factura> facturas= new TreeSet<>();
+    private ArrayList<Factura> facturas= new ArrayList<>();
 
     /**
      * @aggregation composite
@@ -174,10 +174,10 @@ public class Clinica {
 	public ArrayList<Paciente> getPatio() {
 		return patio;
 	}
-	public TreeSet<Factura> getFacturas() {
+	public ArrayList<Factura> getFacturas() {
 		return facturas;
 	}
-	public void setFacturas(TreeSet<Factura> facturas) {
+	public void setFacturas(ArrayList<Factura> facturas) {
 		this.facturas = facturas;
 	}
 	public BDdePacientes getPacientes() {

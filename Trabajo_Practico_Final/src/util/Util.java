@@ -29,7 +29,7 @@ public class Util
     {
 		MedicoDTO respuesta = new MedicoDTO();
 		
-		respuesta.setMedicos(Clinica.getInstance().getMedicos().getMedicosBD());
+		respuesta.setMedicosBD(Clinica.getInstance().getMedicos().getMedicosBD());
 		
 		return respuesta;
     }
