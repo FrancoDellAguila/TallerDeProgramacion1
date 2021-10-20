@@ -33,14 +33,12 @@ public class Persistencia implements IPersistencia<Serializable>
     {
         if (objectoutput != null)
             objectoutput.close();
-
     }
 
     public void cerrarInput() throws IOException
     {
         if (objectinput != null)
             objectinput.close();
-
     }
 
 
@@ -57,7 +55,6 @@ public class Persistencia implements IPersistencia<Serializable>
             p = (Serializable) objectinput.readObject();
         return p;
     }
-
 
 
 }

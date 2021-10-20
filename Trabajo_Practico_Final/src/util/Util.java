@@ -2,13 +2,13 @@ package util;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.TreeSet;
+
 
 import modelo.Clinica;
 import persistencia.FacturaDTO;
 import persistencia.MedicoDTO;
 import persistencia.PacienteDTO;
-import personas.Paciente;
+
 import modelo.BDdeMedicos;
 import modelo.BDdePacientes;
 
