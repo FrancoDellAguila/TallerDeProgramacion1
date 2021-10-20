@@ -1,12 +1,13 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.TreeSet;
 
 
 public class BDdeMedicos {	
 
 
-    TreeSet<IMedico> medicosBD= new TreeSet<>();
+    ArrayList<IMedico> medicosBD = new ArrayList<IMedico>();
 
 	public BDdeMedicos() {
 
@@ -16,11 +17,13 @@ public class BDdeMedicos {
 		medicosBD.add(medico);
 	}
 
-	public TreeSet<IMedico> getMedicosBD() {
+	public ArrayList<IMedico> getMedicosBD() {
 		return medicosBD;
 	}
 
-	public void setMedicosBD(TreeSet<IMedico> medicosBD) {
+	public void setMedicosBD(ArrayList<IMedico> medicosBD) {
 		this.medicosBD = medicosBD;
 	}
+
+
 }

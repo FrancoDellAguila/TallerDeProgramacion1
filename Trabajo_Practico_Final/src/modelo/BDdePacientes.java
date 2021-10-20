@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.TreeSet;
 import personas.Paciente;
@@ -10,7 +11,7 @@ public class BDdePacientes {
     /**
      * @aggregation shared
      */
-    TreeSet<Paciente> pacientesBD= new TreeSet<>();
+	ArrayList<Paciente> pacientesBD= new ArrayList<Paciente>();
 
 	public BDdePacientes() {
 
@@ -34,11 +35,13 @@ public class BDdePacientes {
 		this.pacientesBD.add(nuevo);
 	}
 
-	public TreeSet<Paciente> getPacientesBD() {
+	public ArrayList<Paciente> getPacientesBD() {
 		return pacientesBD;
 	}
 
-	public void setPacientesBD(TreeSet<Paciente> pacientesBD) {
+	public void setPacientesBD(ArrayList<Paciente> pacientesBD) {
 		this.pacientesBD = pacientesBD;
 	}
+
+
 }

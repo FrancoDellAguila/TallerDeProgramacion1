@@ -1,8 +1,7 @@
 package persistencia;
 
 import java.io.Serializable;
-
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 import modelo.BDdeMedicos;
 import modelo.IMedico;
@@ -14,14 +13,14 @@ personales como su desempeño dentro de la clínica.*/
 
 public class MedicoDTO implements Serializable{
 	
-	private TreeSet<IMedico> medicosBD = new TreeSet<>();
+	private ArrayList<IMedico> medicosBD = new ArrayList<IMedico>();
 
-	public TreeSet<IMedico> getMedicos() {
-		return this.medicosBD;
+	public ArrayList<IMedico> getMedicosBD() {
+		return medicosBD;
 	}
 
-	public void setMedicos(TreeSet<IMedico> BDdeMedicos) {
-		this.medicosBD = BDdeMedicos;
+	public void setMedicosBD(ArrayList<IMedico> medicosBD) {
+		this.medicosBD = medicosBD;
 	}
 	
 	

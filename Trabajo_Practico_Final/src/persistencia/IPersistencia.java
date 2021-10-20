@@ -3,7 +3,7 @@ package persistencia;
 import java.io.IOException;
 import java.io.Serializable;
 
-public interface IPersistencia {
+public interface IPersistencia<E> {
 	void abrirInput();
 	
 	void abrirOutput();

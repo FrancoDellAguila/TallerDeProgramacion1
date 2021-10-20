@@ -1,7 +1,8 @@
 package persistencia;
 
 import java.io.Serializable;
-import java.util.TreeSet;
+import java.util.ArrayList;
+
 
 import personas.Paciente;
 
@@ -9,17 +10,18 @@ import personas.Paciente;
 histórico de las prácticas e internaciones realizadas.*/
 
 public class PacienteDTO implements Serializable{
-	TreeSet<Paciente> pacientes= new TreeSet<>();
+	ArrayList<Paciente> pacientes= new ArrayList<Paciente>();
 	
 	public PacienteDTO(){
 	}
 
-	public TreeSet<Paciente> getPacientes() {
-		return this.pacientes;
+	public ArrayList<Paciente> getPacientes() {
+		return pacientes;
 	}
 
-	public void setPacientes(TreeSet<Paciente> pacientes) {
+	public void setPacientes(ArrayList<Paciente> pacientes) {
 		this.pacientes = pacientes;
 	}
-	
+
+
 }

@@ -1,11 +1,13 @@
 package controlador;
 
-import persistencia.ClinicaDTO;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
+
 import persistencia.IPersistencia;
 import persistencia.Persistencia;
 import util.Util;
 
-public class Controlador {
+public class Controlador implements ActionListener,WindowListener{
 	public void actionPerformed(ActionEvent e) {
 
 		String comando = e.getActionCommand();	
