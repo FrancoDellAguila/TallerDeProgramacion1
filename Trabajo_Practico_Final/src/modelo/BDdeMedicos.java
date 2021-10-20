@@ -1,8 +1,7 @@
 package modelo;
 
-import java.util.Iterator;
 import java.util.TreeSet;
-import personas.IMedico;
+
 
 public class BDdeMedicos {	
 

@@ -1,5 +1,6 @@
 package persistencia;
 
+import java.io.Serializable;
 import java.util.TreeSet;
 
 import infraestructura.Factura;

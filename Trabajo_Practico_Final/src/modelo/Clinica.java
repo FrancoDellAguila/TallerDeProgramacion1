@@ -11,6 +11,8 @@ import personas.Paciente;
 import infraestructura.SalaDeEspera;
 import infraestructura.Factura;
 import infraestructura.Prestacion;
+import modelo.BDdeMedicos;
+import modelo.BDdePacientes;
 
 
 

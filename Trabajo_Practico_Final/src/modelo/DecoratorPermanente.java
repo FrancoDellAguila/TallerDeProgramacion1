@@ -37,5 +37,6 @@ public class DecoratorPermanente extends DecoratorContratacion {
 		return this.encapsulado.toString()+" Contratacion Permanente";
 	}
 
+
 	
 }

@@ -33,11 +33,11 @@ public class Prueba {
         IMedico medico=null, medico2 =null,medico3=null;
         try {
 			 medico = MedicoFactory.getMedico("25900987","Luis","Montini","MDP","2234565","Independencia","1111","Cirujia","Permanente","Magister");
-			 Clinica.getInstance().getMedicos().agregarMedico(medico);
-			 medico2 = MedicoFactory.getMedico("25980987","Luis","Montini","MDP","2234565","Independencia","2222","Clinica","Permanente","Doctor");
-			 Clinica.getInstance().getMedicos().agregarMedico(medico2);
-			 medico3 = MedicoFactory.getMedico("2565657","Luis","Montini","MDP","2234565","Independencia","3333","Pediatria","Permanente","Magister");
-			 Clinica.getInstance().getMedicos().agregarMedico(medico3);
+			 //Clinica.getInstance().getMedicos().agregarMedico(medico);
+			 medico2 = MedicoFactory.getMedico("25980987","Juan","Montini","MDP","2234566","Independencia","2222","Clinica","Permanente","Doctor");
+			 //Clinica.getInstance().getMedicos().agregarMedico(medico2);
+			 medico3 = MedicoFactory.getMedico("2565657","Pablo","Montini","MDP","2234567","Independencia","3333","Pediatria","Permanente","Magister");
+			 //Clinica.getInstance().getMedicos().agregarMedico(medico3);
 		} catch (ImposibleCrearMedicoException e) {
             System.out.println(e.getMessage()+e.getDato());
         }

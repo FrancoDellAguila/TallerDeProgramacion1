@@ -1,5 +1,6 @@
 package persistencia;
 
+import java.io.Serializable;
 import java.util.TreeSet;
 
 import personas.Paciente;
@@ -14,7 +15,7 @@ public class PacienteDTO implements Serializable{
 	}
 
 	public TreeSet<Paciente> getPacientes() {
-		return pacientes;
+		return this.pacientes;
 	}
 
 	public void setPacientes(TreeSet<Paciente> pacientes) {

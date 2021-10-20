@@ -9,7 +9,8 @@ import persistencia.FacturaDTO;
 import persistencia.MedicoDTO;
 import persistencia.PacienteDTO;
 import personas.Paciente;
-
+import modelo.BDdeMedicos;
+import modelo.BDdePacientes;
 
 
 public class Util
@@ -47,15 +48,21 @@ public class Util
     public static void clinicaFromClinicaDTOs(PacienteDTO pacientesDTO, MedicoDTO medicosDTO, FacturaDTO facturaDTO) 
     {
     	//Clinica.getInstance().setAsociados(clinicaDTO.getAsociados());
-    	TreeSet<Paciente> aux1 = pacientesDTO.getPacientes();
     	
-    	Clinica.getInstance().setPacientes().setPacientesBD(aux1);
-    	Clinica.getInstance().setMedicos(setMedicosBD(medicosDTO.getMedicos()));
+    	BDdeMedicos aux2 = new BDdeMedicos();
+    	aux2.setMedicosBD(medicosDTO.getMedicos());
+    	BDdePacientes aux1 = new BDdePacientes();
+    	aux1.setPacientesBD(pacientesDTO.getPacientes());
+    	
+    	Clinica.getInstance().setPacientes(aux1);
+    	Clinica.getInstance().setMedicos(aux2);
     	Clinica.getInstance().setFacturas(facturaDTO.getFacturas());
 	
     }
     
   
+	
+
 	public static final Random r = new Random();
 
 	public static void espera(int milisegundos) {
