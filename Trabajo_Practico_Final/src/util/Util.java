@@ -45,12 +45,12 @@ public class Util
     
 
     
-    public static void clinicaFromClinicaDTOs(PacienteDTO pacientesDTO, MedicoDTO medicosDTO, FacturaDTO facturaDTO) 
+    public static void clinicaDTOFromClinicaDTO(PacienteDTO pacientesDTO, MedicoDTO medicosDTO, FacturaDTO facturaDTO) 
     {
     	//Clinica.getInstance().setAsociados(clinicaDTO.getAsociados());
     	
     	BDdeMedicos aux2 = new BDdeMedicos();
-    	aux2.setMedicosBD(medicosDTO.getMedicos());
+    	aux2.setMedicosBD(medicosDTO.getMedicosBD());
     	BDdePacientes aux1 = new BDdePacientes();
     	aux1.setPacientesBD(pacientesDTO.getPacientes());
     	
