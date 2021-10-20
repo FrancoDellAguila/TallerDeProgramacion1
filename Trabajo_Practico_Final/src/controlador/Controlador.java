@@ -33,9 +33,10 @@ public class Controlador implements ActionListener,WindowListener{
 	        	System.out.println("Clinica serializada al apretar boton");
 	        	idao.cerrarOutput();
 	        	System.out.println("Archivo cerrado");
-	        	
+	        	this.vista.informaStatusPacientes("OK");
 	        }catch(Exception e1) {
 	        	System.out.println(e1.getMessage());
+	        	this.vista.informaStatusPacientes("ERROR");
 	        }
 		}else if (comando.equals("PersistirMedicos")) {
 			IPersistencia idao = new Persistencia();
@@ -47,9 +48,10 @@ public class Controlador implements ActionListener,WindowListener{
 	        	System.out.println("Clinica serializada al apretar boton");
 	        	idao.cerrarOutput();
 	        	System.out.println("Archivo cerrado");
-	        	
+	        	this.vista.informaStatusMedicos("OK");
 	        }catch(Exception e1) {
 	        	System.out.println(e1.getMessage());
+	        	this.vista.informaStatusMedicos("ERROR");
 	        }
 		}else if (comando.equals("PersistirFacturas")) {
 			IPersistencia idao = new Persistencia();
@@ -61,9 +63,10 @@ public class Controlador implements ActionListener,WindowListener{
 	        	System.out.println("Clinica serializada al apretar boton");
 	        	idao.cerrarOutput();
 	        	System.out.println("Archivo cerrado");
-	        	
+	        	this.vista.informaStatusFacturas("OK");
 	        }catch(Exception e1) {
 	        	System.out.println(e1.getMessage());
+	        	this.vista.informaStatusFacturas("ERROR");
 	        }
 		}else if(comando.equals("AgregarMedico")) {
 			String nombre,apellido,dni,direccion,ciudad,telefono,matricula,especialidad,posgrado,contratacion;
