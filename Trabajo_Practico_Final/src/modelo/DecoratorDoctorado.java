@@ -1,5 +1,6 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
 import personas.Paciente;

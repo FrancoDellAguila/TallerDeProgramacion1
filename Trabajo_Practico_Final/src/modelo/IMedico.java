@@ -1,6 +1,6 @@
 package modelo;
 
-public interface IMedico{
+public interface IMedico {
 	
 	double getHonorario();
 	

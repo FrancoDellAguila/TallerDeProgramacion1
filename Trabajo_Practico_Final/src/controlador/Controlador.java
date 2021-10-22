@@ -2,21 +2,33 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import excepciones.NoExisteContratacionException;
+import excepciones.NoExisteEspecialidadException;
+import excepciones.NoExistePosgradoException;
 import modelo.Clinica;
+import modelo.IMedico;
+import modelo.MedicoFactory;
+import persistencia.FacturaDTO;
 import persistencia.IPersistencia;
+import persistencia.MedicoDTO;
+import persistencia.PacienteDTO;
 import persistencia.Persistencia;
 import util.Util;
 import vista.IVista;
+import vista.Vista;
 
 public class Controlador implements ActionListener,WindowListener{
 	
 	private IVista vista;
-	private Clinica clinica;
 	
-	public Controlador (IVista vista) {
-		this.vista= vista;
+	public Controlador () {
+		this.vista= new Vista();
+		this.vista.setControlador(this);
+		this.vista.arranca();
+		this.vista.getMedicos(Clinica.getInstance().getMedicos().getMedicosBD());
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -28,7 +40,8 @@ public class Controlador implements ActionListener,WindowListener{
 			try {
 	        	idao.abrirOutput("Paciente.bin");
 	        	System.out.println("Creacion archivo escritura");
-	        	ClinicaDTO cdto = Util.clinicaDTOFromCLinica();
+	        	PacienteDTO cdto = Util.pacienteDTOFromClinica();
+	        	System.out.println("se creo");//borrar
 	        	idao.escribir(cdto);
 	        	System.out.println("Clinica serializada al apretar boton");
 	        	idao.cerrarOutput();
@@ -43,7 +56,7 @@ public class Controlador implements ActionListener,WindowListener{
 			try {
 	        	idao.abrirOutput("Medico.bin");
 	        	System.out.println("Creacion archivo escritura");
-	        	ClinicaDTO cdto = Util.clinicaDTOFromCLinica();
+	        	MedicoDTO cdto = Util.medicoDTOFromClinica();
 	        	idao.escribir(cdto);
 	        	System.out.println("Clinica serializada al apretar boton");
 	        	idao.cerrarOutput();
@@ -58,7 +71,7 @@ public class Controlador implements ActionListener,WindowListener{
 			try {
 	        	idao.abrirOutput("Factura.bin");
 	        	System.out.println("Creacion archivo escritura");
-	        	ClinicaDTO cdto = Util.clinicaDTOFromCLinica();
+	        	FacturaDTO cdto = Util.facturaDTOFromClinica();
 	        	idao.escribir(cdto);
 	        	System.out.println("Clinica serializada al apretar boton");
 	        	idao.cerrarOutput();
@@ -81,10 +94,59 @@ public class Controlador implements ActionListener,WindowListener{
 			especialidad=this.vista.getEspecialidad();
 			posgrado=this.vista.getPosgrado();
 			contratacion=this.vista.getContratacion();
-			//aca iria la creacion del medico
-			this.vista.getMedicos(this.clinica.getMedicos().getMedicosBD()); //para volver a escribir los medicos en el area de texto
-		}else if(comando.equals("Cerrar")) {
-			this.vista.cerrar();
+			
+				IMedico medico = null;
+				try {
+					medico = MedicoFactory.getMedico(dni, nombre, apellido, ciudad, telefono, direccion, matricula, especialidad, contratacion, posgrado);
+					Clinica.getInstance().getMedicos().agregarMedico(medico);
+				} catch (NoExisteEspecialidadException | NoExisteContratacionException | NoExistePosgradoException e1) {
+					this.vista.mostrarMensaje(e1.getMessage() + ": " + e1.getDato());
+				}
+				
+			
+			this.vista.getMedicos(Clinica.getInstance().getMedicos().getMedicosBD()); //para volver a escribir los medicos en el area de texto
 		}
+	}
+
+	@Override
+	public void windowOpened(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowClosing(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowClosed(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowIconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowActivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

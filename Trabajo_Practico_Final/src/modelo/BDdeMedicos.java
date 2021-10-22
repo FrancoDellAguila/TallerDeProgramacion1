@@ -7,21 +7,21 @@ import personas.Medico;
 public class BDdeMedicos {	
 
 
-    ArrayList<Medico> medicosBD = new ArrayList<Medico>();
+    ArrayList<IMedico> medicosBD = new ArrayList<IMedico>();
 
 	public BDdeMedicos() {
 
 	}
 	
-	public void agregarMedico(Medico medico) {
+	public void agregarMedico(IMedico medico) {
 		medicosBD.add(medico);
 	}
 
-	public ArrayList<Medico> getMedicosBD() {
+	public ArrayList<IMedico> getMedicosBD() {
 		return medicosBD;
 	}
 
-	public void setMedicosBD(ArrayList<Medico> medicosBD) {
+	public void setMedicosBD(ArrayList<IMedico> medicosBD) {
 		this.medicosBD = medicosBD;
 	}
 

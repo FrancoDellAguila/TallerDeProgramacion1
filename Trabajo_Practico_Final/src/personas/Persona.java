@@ -1,6 +1,8 @@
 package personas;
 
-public abstract class Persona {
+import java.io.Serializable;
+
+public abstract class Persona implements Serializable{
 protected String DNI,nombre,apellido,ciudad,telefono,domicilio;
 
 	//Constructores

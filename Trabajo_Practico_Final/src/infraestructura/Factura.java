@@ -1,5 +1,6 @@
 package infraestructura;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
@@ -14,7 +15,7 @@ import modelo.IMedico;
  * Clase que corresponde a una factura.
  *
  */
-public class Factura implements Comparable{
+public class Factura implements Comparable, Serializable{
 	
 	private int nroFactura;
 	private GregorianCalendar fecha;

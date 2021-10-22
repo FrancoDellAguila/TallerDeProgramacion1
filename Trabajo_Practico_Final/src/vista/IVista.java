@@ -12,7 +12,7 @@ public interface IVista {
 	public void informaStatusPacientes(String status);
 	public void informaStatusMedicos(String status);
 	public void informaStatusFacturas(String status);
-	public void cerrar();
+	public void mostrarMensaje(String mensaje);
 	
 	
 	public String getNombre();

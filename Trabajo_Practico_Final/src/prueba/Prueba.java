@@ -1,5 +1,7 @@
 package prueba;
 import personas.Paciente;
+import vista.IVista;
+import vista.Vista;
 import modelo.Clinica;
 import modelo.IMedico;
 import modelo.MedicoFactory;
@@ -8,6 +10,7 @@ import modelo.PacienteFactory;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
+import controlador.Controlador;
 import excepciones.ImposibleCrearMedicoException;
 import excepciones.NoExisteRangoEtarioException;
 import infraestructura.Factura;
@@ -33,11 +36,11 @@ public class Prueba {
         IMedico medico=null, medico2 =null,medico3=null;
         try {
 			 medico = MedicoFactory.getMedico("25900987","Luis","Montini","MDP","2234565","Independencia","1111","Cirujia","Permanente","Magister");
-			 //Clinica.getInstance().getMedicos().agregarMedico(medico);
+			 Clinica.getInstance().getMedicos().agregarMedico(medico);
 			 medico2 = MedicoFactory.getMedico("25980987","Juan","Montini","MDP","2234566","Independencia","2222","Clinica","Permanente","Doctor");
-			 //Clinica.getInstance().getMedicos().agregarMedico(medico2);
+			 Clinica.getInstance().getMedicos().agregarMedico(medico2);
 			 medico3 = MedicoFactory.getMedico("2565657","Pablo","Montini","MDP","2234567","Independencia","3333","Pediatria","Permanente","Magister");
-			 //Clinica.getInstance().getMedicos().agregarMedico(medico3);
+			 Clinica.getInstance().getMedicos().agregarMedico(medico3);
 		} catch (ImposibleCrearMedicoException e) {
             System.out.println(e.getMessage()+e.getDato());
         }
@@ -71,6 +74,9 @@ public class Prueba {
         System.out.println("--------------------");
         System.out.println("REPORTE:");
         Clinica.getInstance().reporteMedico(medico, fecha1, fecha2);    
+        
+        
+        Controlador controlador = new Controlador();
 	}
  
 }

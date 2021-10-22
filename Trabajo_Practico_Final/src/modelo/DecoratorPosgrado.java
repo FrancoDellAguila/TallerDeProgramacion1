@@ -1,6 +1,8 @@
 package modelo;
 
-public abstract class DecoratorPosgrado implements IMedico {
+import java.io.Serializable;
+
+public abstract class DecoratorPosgrado implements IMedico, Serializable {
 protected IMedico encapsulado;
 
 	//Constructores

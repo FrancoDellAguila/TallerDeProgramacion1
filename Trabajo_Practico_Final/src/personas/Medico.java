@@ -2,9 +2,11 @@ package personas;
 
 
 
+import java.io.Serializable;
+
 import modelo.IMedico;
 
-public class Medico extends Persona implements IMedico{
+public class Medico extends Persona implements IMedico, Serializable{
 private String matricula,especialidad;	
 private final double honorarioBasico=1000;
 

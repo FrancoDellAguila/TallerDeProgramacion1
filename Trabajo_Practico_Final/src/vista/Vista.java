@@ -21,6 +21,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 import javax.swing.JTextArea;
 
@@ -40,14 +41,8 @@ public class Vista extends JFrame implements IVista  {
 	private JTextField textField_pacientes;
 	private JPanel panel_8;
 	private JPanel panel_9;
-	private JPanel panel_3;
-	private JPanel panel_4;
-	private JPanel panel_5;
-	private JPanel panel_6;
-	private JPanel panel_7;
-	private JButton btnNewButton_Cerrar;
 	private JLabel lblNewLabel_2;
-	private JButton btnNewButton_PersistirFacturas_1;
+	private JButton btnNewButton_PersistirFactura;
 	private JTextField textField_facturas;
 	private JPanel panel_10;
 	private JPanel panel_11;
@@ -78,18 +73,7 @@ public class Vista extends JFrame implements IVista  {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Vista frame = new Vista();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
@@ -107,7 +91,7 @@ public class Vista extends JFrame implements IVista  {
 		
 		this.panel = new JPanel();
 		this.tabbedPane.addTab("Persistencia", null, this.panel, null);
-		this.panel.setLayout(new GridLayout(4, 0, 0, 0));
+		this.panel.setLayout(new GridLayout(3, 0, 0, 0));
 		
 		this.panel_1 = new JPanel();
 		this.panel.add(this.panel_1);
@@ -146,33 +130,14 @@ public class Vista extends JFrame implements IVista  {
 		this.lblNewLabel_2 = new JLabel("Persistir facturas");
 		this.panel_9.add(this.lblNewLabel_2);
 		
-		this.btnNewButton_PersistirFacturas_1 = new JButton("Persistir");
-		this.btnNewButton_PersistirFacturas_1.setActionCommand("PersistirFacturas");
-		this.panel_9.add(this.btnNewButton_PersistirFacturas_1);
+		this.btnNewButton_PersistirFactura = new JButton("Persistir");
+		this.btnNewButton_PersistirFactura.setActionCommand("PersistirFacturas");
+		this.panel_9.add(this.btnNewButton_PersistirFactura);
 		
 		this.textField_facturas = new JTextField();
 		this.textField_facturas.setEditable(false);
 		this.textField_facturas.setColumns(10);
 		this.panel_9.add(this.textField_facturas);
-		
-		this.panel_3 = new JPanel();
-		this.panel.add(this.panel_3);
-		this.panel_3.setLayout(new GridLayout(0, 4, 0, 0));
-		
-		this.panel_4 = new JPanel();
-		this.panel_3.add(this.panel_4);
-		
-		this.panel_5 = new JPanel();
-		this.panel_3.add(this.panel_5);
-		
-		this.panel_6 = new JPanel();
-		this.panel_3.add(this.panel_6);
-		
-		this.panel_7 = new JPanel();
-		this.panel_3.add(this.panel_7);
-		
-		this.btnNewButton_Cerrar = new JButton("Cerrar");
-		this.panel_7.add(this.btnNewButton_Cerrar);
 		
 		this.panel_8 = new JPanel();
 		this.tabbedPane.addTab("Agregar Medico", null, this.panel_8, null);
@@ -280,8 +245,7 @@ public class Vista extends JFrame implements IVista  {
 	@Override
 	public void setControlador(Controlador c) {
 		this.controladorVista=c;
-		this.btnNewButton_Cerrar.addActionListener(c);
-		this.btnNewButton_PersistirPacientes.addActionListener(c);
+		this.btnNewButton_PersistirFactura.addActionListener(c);
 		this.btnNewButton_PersistirMedicos.addActionListener(c);
 		this.btnNewButton_PersistirPacientes.addActionListener(c);
 		this.btnNewButton_agregarMedico.addActionListener(c);
@@ -302,9 +266,6 @@ public class Vista extends JFrame implements IVista  {
 		this.textField_facturas.setText(status);
 	}
 	
-	public void cerrar() {
-		this.setVisible(false);
-	}
 
 	@Override
 	public String getNombre() {
@@ -373,5 +334,10 @@ public class Vista extends JFrame implements IVista  {
 		while(it.hasNext()) {
 			this.textArea_medicos.append(it.next().toString()+"\n");
 		}
+	}
+
+	@Override
+	public void mostrarMensaje(String mensaje) {
+		JOptionPane.showMessageDialog(this, mensaje);
 	}
 }

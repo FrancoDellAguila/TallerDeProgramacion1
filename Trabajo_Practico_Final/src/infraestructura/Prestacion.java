@@ -1,6 +1,8 @@
 package infraestructura;
 
-public class Prestacion {
+import java.io.Serializable;
+
+public class Prestacion implements Serializable {
 private String prestacion;
 private double valor,subtotal;
 private int cantidad;
