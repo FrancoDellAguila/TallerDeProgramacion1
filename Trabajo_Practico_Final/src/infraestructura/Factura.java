@@ -31,9 +31,16 @@ public class Factura implements Comparable, Serializable{
      */
     private ArrayList <Prestacion> prestaciones = new ArrayList <Prestacion>();
 	
-	
+	/**Constructor de factura
+	 * <b> Pre: paciente debe ser distinto de null.</b>
+	 * <b> Pre: nroFactura debe ser positivo.</b>
+	 * <b> Post: se le asignó a la factura un número, una fecha y un paciente.</b>
+	 * @param nroFactura: Parametro de tipo entero.
+	 * @param fecha: Parametro de tipo GregorianCalendar.
+	 * @param paciente: Parametro de tipo Paciente.
+	 */
 	 public Factura(int nroFactura, GregorianCalendar fecha,Paciente paciente) {
-		 this.paciente=paciente;
+		this.paciente=paciente;
 		this.nroFactura = nroFactura;
 		this.fecha = fecha;
 	}
@@ -95,6 +102,9 @@ public class Factura implements Comparable, Serializable{
 	 
 	}
 	
+	 /**Se muestran en pantalla las prestaciones y el importe total correspondiente a la factura
+	 * <b> Post: Se mostraron por pantalla las prestaciones y el importe total.</b>
+	 */
 	public void muestraFactura() {
 		
 		for (Prestacion prestaciones : this.prestaciones) 
@@ -114,6 +124,10 @@ public class Factura implements Comparable, Serializable{
 	}
 
 	@Override
+	 /**Compara dos facturas, si las fechas son iguales, devuelve resta entre NumeroHistoria de factura actual con NumeroHistoria de factura de entrada. Caso contrario, devuelve entero positivo si la factura actual es posterior a factura de entrada, o entero negativo en caso contrario
+	 * <b> Pre:o debe ser distinto de null.</b>
+	 * @param o: Parametro de tipo objeto.
+	 */
 	public int compareTo(Object o) {
 		
 		Factura factura = (Factura) o; 

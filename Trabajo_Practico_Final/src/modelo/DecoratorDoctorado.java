@@ -8,9 +8,12 @@ import personas.Paciente;
 public class DecoratorDoctorado extends DecoratorPosgrado {
 
 	//Constructores
+	/**Constructor de Medico Doctorado
+	 * <b> Pre: encapsulado debe ser distinto de null.</b>
+	 * @param encapsulado: Parametro de tipo IMedico.
+	 */
 	public DecoratorDoctorado(IMedico encapsulado) {
 		super(encapsulado);
-		// TODO Auto-generated constructor stub
 	}
 	
 	//Metodos

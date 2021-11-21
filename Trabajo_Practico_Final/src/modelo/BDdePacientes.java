@@ -17,6 +17,10 @@ public class BDdePacientes {
 
 	}
 	
+	/**Se busca el paciente en el arreglo pacientesBD y se devuelve true en caso que exista y false en caso contrario
+	 * <b> Pre: paciente es distinto de null.</b>
+	 * @param paciente: Parametro de tipo paciente.
+	 */
 	public boolean buscarPaciente(Paciente paciente) {
 		Iterator<Paciente> it = this.pacientesBD.iterator();
 		boolean existe=false;
@@ -29,6 +33,12 @@ public class BDdePacientes {
 		}
 		return existe;
 	}
+	
+	/**Se da de alta un paciente
+	 * <b> Pre: nuevo es distinto de null.</b>
+	 * <b> Post: se agregó nuevo al arreglo pacientesBD.</b>
+	 * @param nuevo: Parametro de tipo paciente.
+	 */
 	public void altaDePaciente(Paciente nuevo) {
 		generaNumHist++;
 		nuevo.setNumeroHistoria(generaNumHist);

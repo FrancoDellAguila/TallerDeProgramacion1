@@ -12,15 +12,26 @@ public abstract class Habitacion {
 
 	
 	//Constructores
+	/**Constructor de Habitacion
+	 * <b> Pre: cantdias debe ser positivo.</b>
+	 * @param nroHabitacion: Parametro de tipo entero.
+	 * @param cantdias: Parametro de tipo entero.
+	 * @param costoAsignacion: Parametro de tipo double
+	 */
 	public Habitacion(int nroHabitacion,int cantdias,double costoAsignacion) {
 		super();
 		this.nroHabitacion = nroHabitacion;
-		this.cantDias=cantdias;
-		this.costoAsignacion=costoAsignacion;
+		this.cantDias = cantdias;
+		this.costoAsignacion = costoAsignacion;
 	}
 
 	//Metodos
+	/**Se devuelve el costo de la habitacion
+	 * <b> Pre: cantdias debe ser positivo.</b>
+	 * @param cantdias: Parametro de tipo entero.
+	 */
 	public abstract double costoDeHabitacion(int cantDias);
+	
 	public int getNroHabitacion() {
 		return nroHabitacion;
 	}

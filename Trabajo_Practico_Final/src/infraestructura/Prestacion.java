@@ -7,7 +7,11 @@ private String prestacion;
 private double valor,subtotal;
 private int cantidad;
 
-
+/**Constructor de Prestacion
+ * @param prestacion: Parametro de tipo string.
+ * @param valor: Parametro de tipo double.
+ * @param cantidad: Parametro de tipo entero.
+ */
 public Prestacion(String prestacion, double valor,int cantidad) {
 	this.prestacion = prestacion;
 	this.valor = valor;

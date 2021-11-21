@@ -6,12 +6,21 @@ public class HabitacionPrivada extends Habitacion {
 	private static double costoExtra=100;
 	
 	//Constructores
+	/**Constructor de HabitacionPrivada
+	 * <b> Pre: cantDias debe ser positivo.</b>
+	 * @param nroHabitacion: Parametro de tipo entero.
+	 * @param cantdias: Parametro de tipo entero.
+	 * @param costoAsignacion: Parametro de tipo double
+	 */
 	public HabitacionPrivada(int nroHabitacion,int cantDias,double costoAsignacion) {
 		super(nroHabitacion,cantDias,costoAsignacion);
-		// TODO Auto-generated constructor stub
 	}
 
 	//Metodos
+	/**Se devuelve el costo de la habitacion
+	 * <b> Pre: cantdias debe ser positivo.</b>
+	 * @param cantdias: Parametro de tipo entero.
+	 */
 	@Override
 	public double costoDeHabitacion(int cantDias) {
 		double auxiliar=0;

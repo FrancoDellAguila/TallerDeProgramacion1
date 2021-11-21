@@ -61,10 +61,10 @@ public class Clinica {
 	
 	
 	//Constructores
-	/**
-	 * 
+	/**Constructor de Clinica, se aplica Singleton
 	 */
 	private Clinica() {}
+	
 	public static Clinica getInstance() {
 		if(Clinica.instance==null) {
 			Clinica.instance=new Clinica();		
@@ -90,8 +90,6 @@ public class Clinica {
 	/**Deriva al paciente a el patio o sala de espera de acuerdo a su prioridad
 	 * <b> Pre: El parametro paciente debe ser distinto de null.</b>
 	 * <b> Post: Se agrega al paciente al patio o sala de espera segun corresponda.</b>
-	 * 
-	 * 
 	 * @param paciente: Parametro de tipo paciente, que es derivado.
 	 */
 	public void derivarPaciente(Paciente paciente) {

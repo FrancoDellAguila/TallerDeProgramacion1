@@ -6,6 +6,10 @@ public abstract class DecoratorPosgrado implements IMedico, Serializable {
 protected IMedico encapsulado;
 
 	//Constructores
+	/**Constructor de Medico Posgrado
+	 * <b> Pre: encapsulado debe ser distinto de null.</b>
+	 * @param encapsulado: Parametro de tipo IMedico.
+	 */
 	public DecoratorPosgrado(IMedico encapsulado) {
 		super();
 		this.encapsulado = encapsulado;

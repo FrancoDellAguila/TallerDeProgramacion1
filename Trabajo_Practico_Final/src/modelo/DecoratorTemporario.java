@@ -7,9 +7,12 @@ import personas.Paciente;
 public class DecoratorTemporario extends DecoratorContratacion{
 
 	//Construcores
+	/**Constructor de Medico Temporario
+	 * <b> Pre: encapsulado debe ser distinto de null.</b>
+	 * @param encapsulado: Parametro de tipo IMedico.
+	 */
 	public DecoratorTemporario(IMedico encapsulado) {
 		super(encapsulado);
-		
 	}
 	
 	//Metodos
@@ -28,7 +31,6 @@ public class DecoratorTemporario extends DecoratorContratacion{
 
 	@Override
 	public String getNombre() {
-		// TODO Auto-generated method stub
 		return this.encapsulado.getNombre();
 	}
 
