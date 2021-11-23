@@ -1,18 +1,17 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.TreeSet;
-
+import java.util.Random;
 import personas.Paciente;
+
 import infraestructura.SalaDeEspera;
 import infraestructura.Factura;
 import infraestructura.Prestacion;
-import modelo.BDdeMedicos;
-import modelo.BDdePacientes;
 
 
 
@@ -191,5 +190,84 @@ public class Clinica {
 		this.medicos = medicos;
 	}
 	
-					
+	/**cálculo de un importe adicional a la facturación
+	 * <b> Pre:los parámetros deben ser distinto de null.</b>
+	 * <b> Pre:el formato de fecha ya está validado.</b>
+	 * <b> Pre:numeroDeFactura es > 0.</b>
+	 * <b> Pre:La listaDeInsumos puede ser null, vacía o con elementos.</b>
+	 * @param Pre:numeroDeFactura: Parametro de tipo entero.
+	 * @param fechaDeSolicitud: Parametro de tipo Date.
+	 * @param listaDeInsumos: Parametro de tipo arrayList de double.
+	 */
+	
+	@SuppressWarnings("deprecation")
+	public double calculoImporteAdicionales(int numeroDeFactura, Date fechaDeSolicitud, ArrayList<Double> listaDeInsumos) {
+		double A=0.6, B=0.3,C=1.4,D=0.8;
+		double importeParcial=0,SubTotalImpar=0,suma=0,importeTotal=0;
+		Random random = new Random();
+		int aleatorio = random.nextInt(30)+1,resta=0,aux=1;
+		boolean encontro=false;
+		Prestacion prestActual;
+		Factura facturaActual = null;
+        
+		Iterator<Factura> it = this.facturas.iterator();
+		while(it.hasNext() && encontro == false) {
+			facturaActual = it.next();
+			if (facturaActual.getNroFactura() == numeroDeFactura)
+				encontro = true;
+		}
+		
+		Date fechaFactura = facturaActual.getFecha().getTime();
+		if (fechaDeSolicitud.getYear() == fechaFactura.getYear()) {
+			if (fechaDeSolicitud.getMonth() == fechaFactura.getMonth()) {
+				resta = fechaDeSolicitud.getDay() - fechaFactura.getDay();
+				resta = Math.abs(resta);
+			}else {
+				if (Math.abs(fechaDeSolicitud.getMonth() - fechaFactura.getMonth()) == 1) {
+					resta = 31-fechaDeSolicitud.getDay()-fechaFactura.getDay();
+					resta = Math.abs(resta);
+				}else
+					resta = 10;
+			}
+		}else {
+			if(Math.abs(fechaDeSolicitud.getYear() - fechaFactura.getYear()) == 11) {
+				resta = 31-fechaDeSolicitud.getDay()-fechaFactura.getDay();
+				resta = Math.abs(resta);
+			}else
+				resta = 10;
+		}
+		
+		Iterator<Double> itLista = listaDeInsumos.iterator();
+		while (itLista.hasNext()) {
+			suma += itLista.next();
+		}
+			
+		Iterator<Prestacion> itPrest = facturaActual.getPrestaciones().iterator();
+		while(itPrest.hasNext()) {
+			prestActual=itPrest.next();
+			if (aux%2 == 1) {
+				SubTotalImpar += prestActual.getValor();
+			}
+		}
+		
+		if(encontro) {
+			if(resta < 10) {
+				importeParcial = facturaActual.getImporteTotal() - (SubTotalImpar * A);
+			}else {
+				importeParcial = facturaActual.getImporteTotal() * B;
+			}
+			if(facturaActual.getPaciente().getRangoEtario().equals("Mayor")) {
+				importeTotal = importeParcial * C;
+			}else {
+				importeTotal = importeParcial * D;
+			}
+			if(aleatorio == fechaFactura.getDay()) {
+				return importeTotal;
+			}else {
+				return importeTotal + suma;
+			}
+		}else {
+			return 0;
+		}
 	}
+}

@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
+import java.util.Random;
+
 import personas.Paciente;
 
 import modelo.IMedico;
@@ -141,4 +143,13 @@ public class Factura implements Comparable, Serializable{
 			
 		return respuesta;
 	}
+
+	public int getNroFactura() {
+		return nroFactura;
+	}
+
+	public double getImporteTotal() {
+		return importeTotal;
+	}
+
 }
