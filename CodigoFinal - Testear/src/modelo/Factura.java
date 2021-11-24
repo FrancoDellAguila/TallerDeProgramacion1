@@ -106,6 +106,23 @@ public class Factura implements Comparable , Serializable{
 	}
 	
 	/**
+     *Devuelve la suma de todas las prestaciones impares tomadas.
+     */
+	public double calcularSubTotalImpar()
+	{
+		double total = 0;
+		int i = 0;
+		for (Prestacion p : this.prestaciones.values()) {
+			if (i%2 == 1)
+			{
+				total += p.getSubtotal();
+			}
+			i++;
+		}
+		return total;
+	}
+	
+	/**
      *Se compara la factura actual con otra por su fecha y, en el caso de que coincidan, por su número de factura.<br>
      *@param o : parámetro de tipo Object que representa un objeto que será casteado para su comparación.
      *@return int con el valor que determina el resultado de la comparación.

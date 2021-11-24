@@ -2,6 +2,7 @@ package modelo;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -285,6 +286,66 @@ public class Clinica {
 		}
 		else
 			throw new OrdenFechasIncorrectoException("El orden de las fechas ingresadas es incorrecto.");
+	}
+	
+
+
+	/**
+	 * Devuelve el importe adicional que se le va a cobrar al paciente
+	 * <b> Pre: </b> numeroDeFactura > 0
+	 * fechaDeSolicitud != null y valido<br>
+     * <b> Post: </b> Devuelve el importe adicional a partir de la existencia de la factura, rango etario y la lista de insumos.<br>
+	 * <br>
+	 * @param numeroDeFactura: numero de factura de la que se va a calcular el importe.
+	 * @param fechaDeSolicitud: fecha de solicitud.
+	 * @param listaDeInsumos: lista de double con los costes de los insumos utilizados.
+	 * */
+	public double calculoImporteAdicionales(int numeroDeFactura, Calendar fechaDeSolicitud, ArrayList<Double> listaDeInsumos)
+	{
+		double importeTotal = 0, importeParcial = 0;
+		double A = 0.7 /*Menor a 1*/, B = 0.5/*Menor a 1 y menor a A*/, C = 1.2 /*Entre 1 y 2*/, D = 0.2 /*Menor a 1 y mayor a A*/; 
+		Factura factura = null;
+				
+		Iterator<Factura> it;
+		Iterator<Double> itDouble;
+		
+		it = facturas.iterator();
+		while (it.hasNext() && factura == null) {
+			factura = it.next();
+			if (factura.getNroFactura() != numeroDeFactura)
+			{
+				factura = null;
+			}
+		}
+		
+		if (factura != null)
+		{
+			if (ChronoUnit.DAYS.between(fechaDeSolicitud.toInstant(), factura.getFecha().toInstant()) < 10)
+			{
+				importeParcial = factura.getTotal() - (factura.calcularSubTotalImpar() * A);
+			}
+			else
+			{
+				importeParcial = factura.getTotal() * B;
+			}
+			
+			if (factura.getPaciente().esMayor())
+			{
+				importeTotal = importeParcial * C;
+			}
+			else
+			{
+				importeTotal = importeParcial * D;
+			}
+			if (listaDeInsumos != null && Math.random() * 30 + 1 != factura.getFecha().get(Calendar.DAY_OF_MONTH))
+			{
+				itDouble = listaDeInsumos.iterator();
+				while (itDouble.hasNext()) {
+					importeTotal += itDouble.next();
+				}
+			}
+		}
+		return importeTotal;
 	}
 
 	public HashMap<String, Paciente> getPacientesRegistrados() {
