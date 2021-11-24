@@ -5,7 +5,7 @@ package modelo;
  * Clase abstracta Paciente que se extiende de Persona e implementa la interfaz IRangoEtario
  *
  */
-public  class Paciente extends Persona implements IRangoEtario{
+public class Paciente extends Persona implements IRangoEtario{
 	private static long siguienteNumero = 0;
 	private long nroHistoria;
 	
@@ -84,6 +84,11 @@ public  class Paciente extends Persona implements IRangoEtario{
 	@Override
 	public boolean prioridadMayor() {
 
+		return false;
+	}
+	
+	public boolean esMayor()
+	{
 		return false;
 	}
 

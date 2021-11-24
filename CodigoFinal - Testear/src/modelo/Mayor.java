@@ -54,5 +54,11 @@ public class Mayor extends Paciente {
 	public boolean prioridadMayor() {
 		return false;
 	}
+	
+	@Override
+	public boolean esMayor()
+	{
+		return true;
+	}
 
 }
