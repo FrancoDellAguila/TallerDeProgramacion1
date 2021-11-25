@@ -19,7 +19,6 @@ public class TestClinicaIntegracion {
 
 	Paciente p1;
 	IMedico m2;
-	private EscenarioClinicaConDatos esc1;
 	@Before
 	public void setUp() throws Exception {
 		p1 = new Paciente("19999999", "aaa", "bbb", "ccc", "ddd", "19999999", 1);
