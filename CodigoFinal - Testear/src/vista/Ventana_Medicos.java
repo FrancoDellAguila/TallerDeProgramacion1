@@ -508,6 +508,42 @@ public class Ventana_Medicos extends JFrame implements  KeyListener , IVistaMedi
 		return grupoPosgrado;
 	}
 
+	public JTextField getTextFieldNombre() {
+		return textFieldNombre;
+	}
+
+	public JTextField getTextFieldApellido() {
+		return textFieldApellido;
+	}
+
+	public JTextField getTextFieldDni() {
+		return textFieldDni;
+	}
+
+	public JTextField getTextFieldDomicilio() {
+		return textFieldDomicilio;
+	}
+
+	public JTextField getTextFieldCiudad() {
+		return textFieldCiudad;
+	}
+
+	public JTextField getTextFieldTelefono() {
+		return textFieldTelefono;
+	}
+
+	public JButton getBtnEliminar() {
+		return btnEliminar;
+	}
+
+	public JButton getBtnAgregar() {
+		return btnAgregar;
+	}
+
+	public JTextField getTextFieldMatricula() {
+		return textFieldMatricula;
+	}
+
 
 	
 

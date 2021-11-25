@@ -1,5 +1,9 @@
 package vista;
 
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 import decorators.IMedico;
 import modelo.Paciente;
 /**
@@ -23,4 +27,18 @@ public interface IVistaMedico extends IVista{
 	IMedico getMedico();
 	void error(String mensaje);
 	void actulizarLista();
+	
+	ButtonGroup getGrupoEspecialidad();
+	ButtonGroup getGrupoContratacion();
+	ButtonGroup getGrupoPosgrado();
+	JTextField getTextFieldNombre();
+	JTextField getTextFieldApellido();
+	JTextField getTextFieldDni();
+	JTextField getTextFieldDomicilio();
+	JTextField getTextFieldCiudad();
+	JTextField getTextFieldTelefono();
+	JButton getBtnEliminar();
+	JButton getBtnAgregar();
+	JTextField getTextFieldMatricula();
+	
 }

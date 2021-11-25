@@ -103,6 +103,7 @@ public class Ventana_Menu extends JFrame implements IVistaMenu{
 		setVisible(false);
 		dispose(); //No llama al windowsListener para evitar que haga persistencia si no se precionó la X de cerrar.
 	}
+	
 	public JButton getBtnMedicos() {
 		return btnMedicos;
 	}

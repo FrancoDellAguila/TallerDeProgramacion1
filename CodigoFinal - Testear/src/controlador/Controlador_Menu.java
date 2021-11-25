@@ -16,7 +16,7 @@ import vista.Ventana_Menu;
  *Controlador para la ventana del menu
  */
 public class Controlador_Menu implements ActionListener,WindowListener{
-	private Ventana_Menu vista = null;
+	private IVistaMenu vista = null;
 	/**
      * Constructor sin parametros, al momento de crear el controlador crea la ventana<br>
      *

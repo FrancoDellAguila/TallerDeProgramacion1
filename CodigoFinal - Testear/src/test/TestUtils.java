@@ -6,7 +6,12 @@ import java.awt.Point;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.util.Enumeration;
+import java.util.Iterator;
 
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import vista.IVistaMenu;
@@ -34,9 +39,68 @@ public class TestUtils
         return delay;
     }
 
+    public static AbstractButton getRadioButtonForNameEspecialidad(ButtonGroup grupo, String name) {
+    	AbstractButton retorno = null;
+    	Enumeration<AbstractButton> e = grupo.getElements();
+    	e.nextElement();
+		retorno = (AbstractButton) e.nextElement();
+    	/*
+    	switch(name) {
+    	case "clinica":
+    		retorno = (AbstractButton) e.nextElement();
+    	case "cirugia":
+    		e.nextElement();
+    		retorno = (AbstractButton) e.nextElement();
+    		break;
+    	case "pediatria":
+    		e.nextElement();
+    		e.nextElement();
+    		retorno = (AbstractButton) e.nextElement();
+    		break;
+    	}*/
+    	return retorno;
+    }
+    
+    public static JRadioButton getRadioButtonForNameContratacion(ButtonGroup grupo, String name) {
+    	JRadioButton retorno = null;
+    	Iterator<AbstractButton> it = grupo.getElements().asIterator();
+    	System.out.println(it.next().getActionCommand());
+    	retorno = (JRadioButton) it.next();
+    	System.out.print(retorno);
+    	/*
+    	switch(name) {
+    	case "permanente":
+    		retorno = (JRadioButton) it.next();
+    	case "residente":
+    		retorno = (JRadioButton) it.next();
+    		break;
+    	}*/
+    	return retorno;
+    }
+   
+    public static JRadioButton getRadioButtonForNamePosgrado(ButtonGroup grupo, String name) {
+    	JRadioButton retorno = null;
+    	Enumeration<AbstractButton> e = grupo.getElements();
+    	switch(name) {
+    	case "ninguno":
+    		retorno = (JRadioButton) e.nextElement();
+    	case "magister":
+    		e.nextElement();
+    		retorno = (JRadioButton) e.nextElement();
+    		break;
+    	case "doctor":
+    		e.nextElement();
+    		e.nextElement();
+    		retorno = (JRadioButton) e.nextElement();
+    		break;
+    	}
+    	return retorno;
+    }
+    
+    
     public static Component getComponentForName(Component parent, String name) {
         Component retorno = null;
-        if (parent.() != null && parent.getName().equals(name))
+        if (parent.getName() != null && parent.getName().equals(name))
             retorno = parent;
         else
         {
