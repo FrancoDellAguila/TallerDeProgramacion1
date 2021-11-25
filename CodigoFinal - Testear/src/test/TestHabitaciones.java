@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import modelo.Compartida;
 import modelo.Habitacion;
 import modelo.Privada;
 import modelo.TerapiaIntensiva;
@@ -88,5 +89,30 @@ public class TestHabitaciones {
 		TerapiaIntensiva ter= new TerapiaIntensiva("10");
 		double costo = ter.getCosto(2);
 		assertEquals(costo, 200,0); //200 = 100 + 10^2
+	}
+	
+	//tests habitacion compartida
+	
+	@Test
+	public void testConstructorCompartida() {
+		String aux = "10";
+		Compartida ter = new Compartida(aux);
+		assertEquals(ter.getNumeroHabitacion(), aux);
+	}
+	
+	@Test
+	public void testSetCostoCompartida() {
+		Compartida.setCostoCompartida(10);
+		Compartida ter= new Compartida("10");
+		assertEquals(ter.getCostoHabitacion(), 10, 0);
+	}
+	
+	@Test
+	public void testGetCostoCompartida() {
+		Habitacion.setCostoAsignacion(100);
+		Compartida.setCostoCompartida(10);
+		Compartida ter= new Compartida("10");
+		double costo = ter.getCosto(2);
+		assertEquals(costo, 120,0); //120 = 100 + 10*2
 	}
 }
