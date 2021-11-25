@@ -34,7 +34,7 @@ public class TestClinicaIntegracion {
 	
 
 
-	@Test 
+	/*@Test 
 	public void testAddMedicoExistente() {
 		
 			Clinica.getInHashMap<K, V>).addMedico(m2);
@@ -43,7 +43,7 @@ public class TestClinicaIntegracion {
 			assertEquals(, esc1);
 		
 		
-	}
+	}*/
 	
 	@Test
 	public void testAddMedicoNuevo() {
