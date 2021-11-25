@@ -81,6 +81,8 @@ public class Ventana_Menu extends JFrame implements IVistaMenu{
 		lblMenu = new JLabel("Menu principal");
 		panelMenu.add(lblMenu);
 		setVisible(true);
+		
+		
 	}
 	/**
 	 * Método con un parámetro que agrega un action listener a los botones de Ambulancia, Asociados y Facturación<br>
@@ -101,5 +103,9 @@ public class Ventana_Menu extends JFrame implements IVistaMenu{
 		setVisible(false);
 		dispose(); //No llama al windowsListener para evitar que haga persistencia si no se precionó la X de cerrar.
 	}
-
+	public JButton getBtnMedicos() {
+		return btnMedicos;
+	}
+	
+	
 }

@@ -39,7 +39,7 @@ public class Controlador_Medicos implements ActionListener, WindowListener{
 			try {
 				long Matricula = Long.parseLong(this.vista.getMatricula());
 
-
+				
 
 				IMedico medico = MedicoFactory.getMedico(this.vista.getEspecialidad(),this.vista.getContratacion(),this.vista.getPosgrado(), 
 						this.vista.getDni(), this.vista.getNombre(), this.vista.getApellido(), this.vista.getDomicilio(), this.vista.getCiudad(),
@@ -89,5 +89,8 @@ public class Controlador_Medicos implements ActionListener, WindowListener{
 	public void windowDeactivated(WindowEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+	public IVistaMedico getVista() {
+		return vista;
 	}
 }

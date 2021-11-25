@@ -16,7 +16,7 @@ import vista.Ventana_Menu;
  *Controlador para la ventana del menu
  */
 public class Controlador_Menu implements ActionListener,WindowListener{
-	private IVistaMenu vista = null;
+	private Ventana_Menu vista = null;
 	/**
      * Constructor sin parametros, al momento de crear el controlador crea la ventana<br>
      *
@@ -112,6 +112,11 @@ public class Controlador_Menu implements ActionListener,WindowListener{
 	public void windowDeactivated(WindowEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	public IVistaMenu getVista() {
+		return vista;
 	}
 
 }

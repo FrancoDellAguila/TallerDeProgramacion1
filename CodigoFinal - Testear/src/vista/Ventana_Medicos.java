@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Enumeration;
 
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -312,6 +313,16 @@ public class Ventana_Medicos extends JFrame implements  KeyListener , IVistaMedi
 		
 		this.actulizarLista();
 		this.setVisible(true);
+		
+		//seteo nombres
+		this.btnAgregar.setName("botonAgregar");
+		this.btnEliminar.setName("botonEliminar");
+		this.textFieldNombre.setName("jtNombre");
+		this.textFieldApellido.setName("jtApellido");
+		this.textFieldDomicilio.setName("jtDomicilio");
+		this.textFieldCiudad.setName("jtCiudad");
+		this.textFieldTelefono.setName("jtTelefono");
+		this.textFieldMatricula.setName("jtMatricula");
 	}
 	
 	/**
@@ -483,6 +494,18 @@ public class Ventana_Medicos extends JFrame implements  KeyListener , IVistaMedi
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+	}
+
+	public ButtonGroup getGrupoEspecialidad() {
+		return grupoEspecialidad;
+	}
+
+	public ButtonGroup getGrupoContratacion() {
+		return grupoContratacion;
+	}
+
+	public ButtonGroup getGrupoPosgrado() {
+		return grupoPosgrado;
 	}
 
 
