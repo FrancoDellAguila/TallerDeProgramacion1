@@ -53,18 +53,18 @@ public class TestGuiConDatos
         JButton abrirMedicos = controladorMenu.getVista().getBtnMedicos();
         TestUtils.clickComponent(abrirMedicos, robot);
     }
-/*
+
     @After
     public void tearDown() throws Exception
     {
         controlador.getVista().setVisible(false);
-    }*/
+    }
 
    
     @Test
     public void testCantidad()
     {
-        Assert.assertEquals("Debe haber 4 usuarios registrados", 4, Clinica.getInstance().getMedicos().size());
+        Assert.assertEquals("Debe haber 4 médicos registrados", 4, Clinica.getInstance().getMedicos().size());
     }
     
     @Test
@@ -292,6 +292,7 @@ public class TestGuiConDatos
         //verifico los resultados
         TestUtils.clickComponent(agregar, robot);
         Assert.assertEquals("Mensaje incorrecto, debería decir "+Mensajes.ERROR_MATRICULA_INCORRECTA.getValor(),Mensajes.ERROR_MATRICULA_INCORRECTA.getValor(),op.getMensaje());
+        Assert.assertEquals("No se deberia agregar", 4, Clinica.getInstance().getMedicos().size());
         robot.keyPress(KeyEvent.VK_ENTER);
     }
     
