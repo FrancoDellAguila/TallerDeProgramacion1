@@ -1,5 +1,7 @@
 package vista;
 
+import javax.swing.JButton;
+
 /**
  * @author Betti Francisco, Kollman Deborah, Stimmler Francisco, Veitch Matias
  *<br>
@@ -8,5 +10,5 @@ package vista;
 public interface IVistaMenu extends IVista {
 	void cerrar();
 
-	
+	JButton getBtnMedicos();
 }

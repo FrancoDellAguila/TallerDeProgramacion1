@@ -9,12 +9,16 @@ import javax.swing.JOptionPane;
 
 import decorators.IMedico;
 import excepciones.PacienteYaExisteException;
+import vista.MiOptionPane;
+import vista.InterfazOptionPanel;
 import modelo.Clinica;
 import modelo.MedicoFactory;
 import modelo.Paciente;
+import util.Mensajes;
 import vista.IVistaMedico;
 import vista.IVistaPaciente;
 import vista.Ventana_Medicos;
+import vista.Ventana_Menu;
 import vista.Ventana_Pacientes;
 /**
  * @author Betti Francisco, Kollman Deborah, Stimmler Francisco, Veitch Matias
@@ -23,6 +27,7 @@ import vista.Ventana_Pacientes;
  */
 public class Controlador_Medicos implements ActionListener, WindowListener{
 	private IVistaMedico vista = null;
+	private InterfazOptionPanel op = new MiOptionPane();
 	/**
 	 * Constructor sin parametros, al momento de crear el controlador crea la ventana<br>
 	 *
@@ -39,7 +44,7 @@ public class Controlador_Medicos implements ActionListener, WindowListener{
 			try {
 				long Matricula = Long.parseLong(this.vista.getMatricula());
 
-
+				
 
 				IMedico medico = MedicoFactory.getMedico(this.vista.getEspecialidad(),this.vista.getContratacion(),this.vista.getPosgrado(), 
 						this.vista.getDni(), this.vista.getNombre(), this.vista.getApellido(), this.vista.getDomicilio(), this.vista.getCiudad(),
@@ -47,9 +52,8 @@ public class Controlador_Medicos implements ActionListener, WindowListener{
 
 				Clinica.getInstance().addMedico(medico);
 			}catch(NumberFormatException e1) {
-				JOptionPane.showMessageDialog(null, "Matricula incorrecta", "ERROR!", JOptionPane.WARNING_MESSAGE);
+				this.op.ShowMessage(null,Mensajes.ERROR_MATRICULA_INCORRECTA.getValor());//por alguna razon todo lo que se haga aca no se guarda
 			}
-
 		}else if(e.getActionCommand().equals("Eliminar")) {
 			Clinica.getInstance().borrarMedico(this.vista.getMedico());
 		}
@@ -67,7 +71,7 @@ public class Controlador_Medicos implements ActionListener, WindowListener{
 	}
 	@Override
 	public void windowClosed(WindowEvent e) {
-		// TODO Auto-generated method stub
+		
 
 	}
 	@Override
@@ -90,4 +94,17 @@ public class Controlador_Medicos implements ActionListener, WindowListener{
 		// TODO Auto-generated method stub
 
 	}
+	public Ventana_Medicos getVista() {
+		return (Ventana_Medicos) vista;
+	}
+
+    public void setOp(InterfazOptionPanel op)
+    {
+    	this.op = op;
+    }
+
+	public InterfazOptionPanel getOp() {
+		return op;
+	}
+    
 }

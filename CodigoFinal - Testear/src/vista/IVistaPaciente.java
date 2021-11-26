@@ -17,4 +17,6 @@ public interface IVistaPaciente extends IVista{
 	Paciente getPaciente();
 	void error(String mensaje);
 	void actulizarLista();
+	
+	
 }

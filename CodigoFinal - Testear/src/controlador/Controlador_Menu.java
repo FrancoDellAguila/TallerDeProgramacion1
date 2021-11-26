@@ -17,6 +17,7 @@ import vista.Ventana_Menu;
  */
 public class Controlador_Menu implements ActionListener,WindowListener{
 	private IVistaMenu vista = null;
+	private Controlador_Medicos controlador_medicos;
 	/**
      * Constructor sin parametros, al momento de crear el controlador crea la ventana<br>
      *
@@ -37,7 +38,7 @@ public class Controlador_Menu implements ActionListener,WindowListener{
 			Controlador_Pacientes controlador_asociados = new Controlador_Pacientes();
 			this.vista.cerrar();
 		} else if(e.getActionCommand().equals("Medicos")) {
-			Controlador_Medicos controlador_medicos = new Controlador_Medicos();
+			Controlador_Medicos controlador_medicos= new Controlador_Medicos();
 			this.vista.cerrar();
 		} 
 		
@@ -112,6 +113,11 @@ public class Controlador_Menu implements ActionListener,WindowListener{
 	public void windowDeactivated(WindowEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	public IVistaMenu getVista() {
+		return vista;
 	}
 
 }

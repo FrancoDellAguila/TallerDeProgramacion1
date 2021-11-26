@@ -89,7 +89,7 @@ public class Ventana_Facturacion extends JFrame implements  KeyListener , IVista
 	 * Constructor sin parámetros para setear la ventana de facturación.
 	 */
 	public Ventana_Facturacion() {
-	    
+		
 		setFocusable(true);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 980, 600);
