@@ -51,7 +51,8 @@ public class GuiTestConDatos {
 		Clinica.getInstance().addMedico(new Medico("40404040", "aaa", "bbb", "ccc", "ddd", "19999999", 3));
 		Clinica.getInstance().addMedico(new Medico("20202020", "aaa", "bbb", "ccc", "ddd", "19999999", 2));
     }
-	
+
+    
     @Test
     public void testCantidad()
     {
@@ -64,16 +65,18 @@ public class GuiTestConDatos {
     	robot.delay(TestUtils.getDelay());
     	//obtengo las referencias a los componentes necesarios
     	JButton abrirMedicos = controladorMenu.getVista().getBtnMedicos();
-    	
-    	//no se cual usar
-    	DefaultListModel<IMedico> listmodel = controlador.getVista().getListModel();
     	JList<IMedico> listmedicos = controlador.getVista().getListMedicos();
     	
     	JButton agregar = controlador.getVista().getBtnAgregar();
         JButton eliminar = controlador.getVista().getBtnEliminar();
         
-        
+        TestUtils.clickComponent(abrirMedicos, robot);
+        robot.delay(TestUtils.getDelay());
+
+        TestUtils.clickComponent(listmedicos, robot);
         TestUtils.clickComponent(eliminar, robot);
+
+        Assert.assertEquals("Debería haber un elemento menos que antes", 3, Clinica.getInstance().getMedicos().size());
     }
     
     @Test
@@ -98,7 +101,6 @@ public class GuiTestConDatos {
         JRadioButton ninguno = (JRadioButton) TestUtils.getRadioButtonForNamePosgrado(posgrado,"ninguno");
         
         JButton agregar = controlador.getVista().getBtnAgregar();
-        JButton eliminar = controlador.getVista().getBtnEliminar();
         //lleno los JTextField
         TestUtils.clickComponent(abrirMedicos, robot);
         robot.delay(TestUtils.getDelay());
@@ -123,9 +125,9 @@ public class GuiTestConDatos {
         TestUtils.clickComponent(matricula, robot);
         TestUtils.tipeaTexto("123", robot);
         //verifico los resultados
-        Assert.assertFalse("El boton de registro deberia estar hablitado", agregar.isEnabled());
-        Assert.assertFalse("El boton de eliminar deberia estar deshablitado", eliminar.isEnabled());
+        
         TestUtils.clickComponent(agregar, robot);
+        Assert.assertEquals("Debería haber un elemento mas que antes", 5, Clinica.getInstance().getMedicos().size());
     }
     
     @Test
@@ -150,7 +152,6 @@ public class GuiTestConDatos {
         JRadioButton ninguno = (JRadioButton) TestUtils.getRadioButtonForNamePosgrado(posgrado,"ninguno");
         
         JButton agregar = controlador.getVista().getBtnAgregar();
-        JButton eliminar = controlador.getVista().getBtnEliminar();
         //lleno los JTextField
         TestUtils.clickComponent(abrirMedicos, robot);
         robot.delay(TestUtils.getDelay());
@@ -174,13 +175,61 @@ public class GuiTestConDatos {
         TestUtils.tipeaTexto("2235678912", robot);
         TestUtils.clickComponent(matricula, robot);
         TestUtils.tipeaTexto("abc", robot);
-        //verifico los resultados
-        Assert.assertFalse("El boton de registro deberia estar hablitado", agregar.isEnabled());
-        Assert.assertFalse("El boton de eliminar deberia estar deshablitado", eliminar.isEnabled());
         
+        //verifico los resultados
         TestUtils.clickComponent(agregar, robot);
 
         Assert.assertEquals("Mensaje incorrecto, debería decir "+Mensajes.ERROR_MATRICULA_INCORRECTA.getValor(),Mensajes.ERROR_MATRICULA_INCORRECTA.getValor(),op.getMensaje());
+        
     }
-    
+    @Test
+    public void testCompletoErrorDni()
+    {
+        robot.delay(TestUtils.getDelay());
+        //obtengo las referencias a los componentes necesarios
+        JButton abrirMedicos = controladorMenu.getVista().getBtnMedicos();
+        JTextField nombre = controlador.getVista().getTextFieldNombre();
+        JTextField apellido = controlador.getVista().getTextFieldApellido();
+        JTextField dni = controlador.getVista().getTextFieldDni();
+        JTextField domicilio = controlador.getVista().getTextFieldDomicilio();
+        JTextField ciudad = controlador.getVista().getTextFieldCiudad();
+        JTextField telefono = controlador.getVista().getTextFieldTelefono();
+        JTextField matricula = controlador.getVista().getTextFieldMatricula();
+        
+        ButtonGroup especialidad = controlador.getVista().getGrupoEspecialidad();
+        ButtonGroup contratacion = controlador.getVista().getGrupoContratacion();
+        ButtonGroup posgrado = controlador.getVista().getGrupoPosgrado();
+        JRadioButton clinica = (JRadioButton) TestUtils.getRadioButtonForNameEspecialidad(especialidad,"clinica");
+        JRadioButton permanente = (JRadioButton) TestUtils.getRadioButtonForNameContratacion(contratacion,"residente");
+        JRadioButton ninguno = (JRadioButton) TestUtils.getRadioButtonForNamePosgrado(posgrado,"ninguno");
+        
+        JButton agregar = controlador.getVista().getBtnAgregar();
+        //lleno los JTextField
+        TestUtils.clickComponent(abrirMedicos, robot);
+        robot.delay(TestUtils.getDelay());
+        especialidad.clearSelection();
+        TestUtils.clickComponent(clinica, robot);
+        contratacion.clearSelection();
+        TestUtils.clickComponent(permanente, robot);
+        posgrado.clearSelection();
+        TestUtils.clickComponent(ninguno, robot);
+        TestUtils.clickComponent(nombre, robot);
+        TestUtils.tipeaTexto("Guille", robot);
+        TestUtils.clickComponent(apellido, robot);
+        TestUtils.tipeaTexto("Guccione", robot);
+        TestUtils.clickComponent(dni, robot);
+        TestUtils.tipeaTexto("123456", robot);
+        TestUtils.clickComponent(domicilio, robot);
+        TestUtils.tipeaTexto("juanBjusto", robot);
+        TestUtils.clickComponent(ciudad, robot);
+        TestUtils.tipeaTexto("Mar del Plata", robot);
+        TestUtils.clickComponent(telefono, robot);
+        TestUtils.tipeaTexto("2235678912", robot);
+        TestUtils.clickComponent(matricula, robot);
+        TestUtils.tipeaTexto("123", robot);
+        
+        TestUtils.clickComponent(agregar, robot);
+        //verifico los resultados
+        Assert.assertEquals("No se deberia agregar", 4, Clinica.getInstance().getMedicos().size());
+    }
 }

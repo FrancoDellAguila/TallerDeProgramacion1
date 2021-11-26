@@ -2,12 +2,15 @@ package test;
 
 import controlador.Controlador_Medicos;
 import controlador.Controlador_Menu;
+import decorators.IMedico;
+
 import java.awt.AWTException;
 import java.awt.Robot;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
 import javax.swing.JButton;
+import javax.swing.JList;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
@@ -533,7 +536,133 @@ public class GuiTestEnabledDisabled
         TestUtils.clickComponent(matricula, robot);
         TestUtils.tipeaTexto("123", robot);
         //verifico los resultados
-        Assert.assertFalse("El boton de registro deberia estar hablitado", agregar.isEnabled());
+        robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());
+        System.out.print(controlador.getVista().getBtnAgregar().isEnabled());
+        Assert.assertTrue("El boton de registro deberia estar hablitado", agregar.isEnabled());
         Assert.assertFalse("El boton de eliminar deberia estar deshablitado", eliminar.isEnabled());
+    }
+    
+    @Test
+    public void testCompletoErrorDni()
+    {
+        robot.delay(TestUtils.getDelay());
+        //obtengo las referencias a los componentes necesarios
+        JButton abrirMedicos = controladorMenu.getVista().getBtnMedicos();
+        JTextField nombre = controlador.getVista().getTextFieldNombre();
+        JTextField apellido = controlador.getVista().getTextFieldApellido();
+        JTextField dni = controlador.getVista().getTextFieldDni();
+        JTextField domicilio = controlador.getVista().getTextFieldDomicilio();
+        JTextField ciudad = controlador.getVista().getTextFieldCiudad();
+        JTextField telefono = controlador.getVista().getTextFieldTelefono();
+        JTextField matricula = controlador.getVista().getTextFieldMatricula();
+        
+        ButtonGroup especialidad = controlador.getVista().getGrupoEspecialidad();
+        ButtonGroup contratacion = controlador.getVista().getGrupoContratacion();
+        ButtonGroup posgrado = controlador.getVista().getGrupoPosgrado();
+        JRadioButton clinica = (JRadioButton) TestUtils.getRadioButtonForNameEspecialidad(especialidad,"clinica");
+        JRadioButton permanente = (JRadioButton) TestUtils.getRadioButtonForNameContratacion(contratacion,"residente");
+        JRadioButton ninguno = (JRadioButton) TestUtils.getRadioButtonForNamePosgrado(posgrado,"ninguno");
+        
+        JButton agregar = controlador.getVista().getBtnAgregar();
+        JButton eliminar = controlador.getVista().getBtnEliminar();
+        //lleno los JTextField
+        TestUtils.clickComponent(abrirMedicos, robot);
+        robot.delay(TestUtils.getDelay());
+        especialidad.clearSelection();
+        TestUtils.clickComponent(clinica, robot);
+        contratacion.clearSelection();
+        TestUtils.clickComponent(permanente, robot);
+        posgrado.clearSelection();
+        TestUtils.clickComponent(ninguno, robot);
+        TestUtils.clickComponent(nombre, robot);
+        TestUtils.tipeaTexto("Guille", robot);
+        TestUtils.clickComponent(apellido, robot);
+        TestUtils.tipeaTexto("Guccione", robot);
+        TestUtils.clickComponent(dni, robot);
+        TestUtils.tipeaTexto("123456", robot);
+        TestUtils.clickComponent(domicilio, robot);
+        TestUtils.tipeaTexto("juanBjusto", robot);
+        TestUtils.clickComponent(ciudad, robot);
+        TestUtils.tipeaTexto("Mar del Plata", robot);
+        TestUtils.clickComponent(telefono, robot);
+        TestUtils.tipeaTexto("2235678912", robot);
+        TestUtils.clickComponent(matricula, robot);
+        TestUtils.tipeaTexto("123", robot);
+        //verifico los resultados
+        Assert.assertTrue("El boton de registro deberia estar hablitado", agregar.isEnabled());
+        Assert.assertFalse("El boton de eliminar deberia estar deshablitado", eliminar.isEnabled());
+    }
+    
+    @Test
+    public void testCompletoErrorTelefono()
+    {
+        robot.delay(TestUtils.getDelay());
+        //obtengo las referencias a los componentes necesarios
+        JButton abrirMedicos = controladorMenu.getVista().getBtnMedicos();
+        JTextField nombre = controlador.getVista().getTextFieldNombre();
+        JTextField apellido = controlador.getVista().getTextFieldApellido();
+        JTextField dni = controlador.getVista().getTextFieldDni();
+        JTextField domicilio = controlador.getVista().getTextFieldDomicilio();
+        JTextField ciudad = controlador.getVista().getTextFieldCiudad();
+        JTextField telefono = controlador.getVista().getTextFieldTelefono();
+        JTextField matricula = controlador.getVista().getTextFieldMatricula();
+        
+        ButtonGroup especialidad = controlador.getVista().getGrupoEspecialidad();
+        ButtonGroup contratacion = controlador.getVista().getGrupoContratacion();
+        ButtonGroup posgrado = controlador.getVista().getGrupoPosgrado();
+        JRadioButton clinica = (JRadioButton) TestUtils.getRadioButtonForNameEspecialidad(especialidad,"clinica");
+        JRadioButton permanente = (JRadioButton) TestUtils.getRadioButtonForNameContratacion(contratacion,"residente");
+        JRadioButton ninguno = (JRadioButton) TestUtils.getRadioButtonForNamePosgrado(posgrado,"ninguno");
+        
+        JButton agregar = controlador.getVista().getBtnAgregar();
+        JButton eliminar = controlador.getVista().getBtnEliminar();
+        //lleno los JTextField
+        TestUtils.clickComponent(abrirMedicos, robot);
+        robot.delay(TestUtils.getDelay());
+        especialidad.clearSelection();
+        TestUtils.clickComponent(clinica, robot);
+        contratacion.clearSelection();
+        TestUtils.clickComponent(permanente, robot);
+        posgrado.clearSelection();
+        TestUtils.clickComponent(ninguno, robot);
+        TestUtils.clickComponent(nombre, robot);
+        TestUtils.tipeaTexto("Guille", robot);
+        TestUtils.clickComponent(apellido, robot);
+        TestUtils.tipeaTexto("Guccione", robot);
+        TestUtils.clickComponent(dni, robot);
+        TestUtils.tipeaTexto("1234567", robot);
+        TestUtils.clickComponent(domicilio, robot);
+        TestUtils.tipeaTexto("juanBjusto", robot);
+        TestUtils.clickComponent(ciudad, robot);
+        TestUtils.tipeaTexto("Mar del Plata", robot);
+        TestUtils.clickComponent(telefono, robot);
+        TestUtils.tipeaTexto("223", robot);
+        TestUtils.clickComponent(matricula, robot);
+        TestUtils.tipeaTexto("123", robot);
+        //verifico los resultados
+        robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());
+        System.out.print(controlador.getVista().getBtnAgregar().isEnabled());
+        Assert.assertFalse("El boton de registro deberia estar deshablitado", agregar.isEnabled());
+        Assert.assertFalse("El boton de eliminar deberia estar deshablitado", eliminar.isEnabled());
+    }
+    
+    @Test
+    public void testBorraMedico()
+    {
+    	robot.delay(TestUtils.getDelay());
+    	//obtengo las referencias a los componentes necesarios
+    	JButton abrirMedicos = controladorMenu.getVista().getBtnMedicos();
+    	JList<IMedico> listmedicos = controlador.getVista().getListMedicos();
+    	
+    	JButton agregar = controlador.getVista().getBtnAgregar();
+        JButton eliminar = controlador.getVista().getBtnEliminar();
+        
+        TestUtils.clickComponent(abrirMedicos, robot);
+        robot.delay(TestUtils.getDelay());
+
+        TestUtils.clickComponent(listmedicos, robot);
+        TestUtils.clickComponent(eliminar, robot);
+        Assert.assertFalse("El boton de agregar deberia estar deshablitado", agregar.isEnabled());
+        Assert.assertTrue("El boton de eliminar deberia estar hablitado", eliminar.isEnabled());
     }
 }
