@@ -53,7 +53,7 @@ public class TestFactura {
 		h.put("i", p2);
 		Factura f1= new Factura(p, h);
 		int aux = f1.getNroFactura();
-		assertEquals(f1.getFecha(), Calendar.getInstance()); // depende del momento en que se toman las fechas.
+		//assertEquals(f1.getFecha(), Calendar.getInstance()); // depende del momento en que se toman las fechas.
 		assertEquals(f1.getPaciente(), p);
 		assertEquals(f1.getPrestaciones(), h);
 		//assertEquals(f1.getTotal(), 150, 0); lo saque porque el gettotal se testea aparte por mas que se calcule en el constructor

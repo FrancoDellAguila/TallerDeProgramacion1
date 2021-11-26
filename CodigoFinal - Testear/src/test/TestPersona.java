@@ -36,6 +36,7 @@ public class TestPersona {
 		assertEquals(matricula, p1.getNroMatricula(), 0);
 	}
 
+	@Test
 	public void testConstructorPacienteConNroHistoria() {
 		String dni = "421577777";
 		String nombre= "aaa";
@@ -54,6 +55,7 @@ public class TestPersona {
 		assertEquals(nroHistoria, p1.getNroHistoria(), 0);
 	}
 	
+	@Test
 	public void testConstructorPacienteSinNroHistoria() {
 		Paciente aux = new Paciente("20000000", "aa", "bb", "cc", "dd", "212523142");
 		long nroHistoria = aux.getNroHistoria();
