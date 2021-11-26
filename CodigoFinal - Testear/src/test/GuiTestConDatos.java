@@ -64,6 +64,8 @@ public class GuiTestConDatos {
     	robot.delay(TestUtils.getDelay());
     	//obtengo las referencias a los componentes necesarios
     	JButton abrirMedicos = controladorMenu.getVista().getBtnMedicos();
+    	
+    	//no se cual usar
     	DefaultListModel<IMedico> listmodel = controlador.getVista().getListModel();
     	JList<IMedico> listmedicos = controlador.getVista().getListMedicos();
     	
@@ -71,7 +73,6 @@ public class GuiTestConDatos {
         JButton eliminar = controlador.getVista().getBtnEliminar();
         
         
-        TestUtils.clickComponent((Component) listmodel.getElementAt(1), robot);
         TestUtils.clickComponent(eliminar, robot);
     }
     
