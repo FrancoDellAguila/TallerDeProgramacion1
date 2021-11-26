@@ -39,60 +39,51 @@ public class TestUtils
         return delay;
     }
 
-    public static AbstractButton getRadioButtonForNameEspecialidad(ButtonGroup grupo, String name) {
-    	AbstractButton retorno = null;
-    	Enumeration<AbstractButton> e = grupo.getElements();
-    	e.nextElement();
-		retorno = (AbstractButton) e.nextElement();
-    	/*
-    	switch(name) {
-    	case "clinica":
-    		retorno = (AbstractButton) e.nextElement();
-    	case "cirugia":
-    		e.nextElement();
-    		retorno = (AbstractButton) e.nextElement();
-    		break;
-    	case "pediatria":
-    		e.nextElement();
-    		e.nextElement();
-    		retorno = (AbstractButton) e.nextElement();
-    		break;
-    	}*/
+    public static JRadioButton getRadioButtonForNameEspecialidad(ButtonGroup grupo, String name) {
+    	JRadioButton retorno = null;
+    	String funcion1 = "clinica",funcion2 = "cirugia";
+    	Iterator<AbstractButton> it = grupo.getElements().asIterator();
+    	if (name.compareTo(funcion1)==0)
+    		retorno = (JRadioButton) it.next();
+    	else {
+    		it.next();
+    		if (name.compareTo(funcion2)==0)
+    			retorno = (JRadioButton) it.next();
+    		else {
+    			it.next();
+    			retorno = (JRadioButton) it.next();
+    		}
+    	}
     	return retorno;
     }
     
     public static JRadioButton getRadioButtonForNameContratacion(ButtonGroup grupo, String name) {
     	JRadioButton retorno = null;
+    	String funcion = "permanente";
     	Iterator<AbstractButton> it = grupo.getElements().asIterator();
-    	System.out.println(it.next().getActionCommand());
-    	retorno = (JRadioButton) it.next();
-    	System.out.print(retorno);
-    	/*
-    	switch(name) {
-    	case "permanente":
+    	if (name.compareTo(funcion) == 0)
     		retorno = (JRadioButton) it.next();
-    	case "residente":
+    	else {
+    		it.next();
     		retorno = (JRadioButton) it.next();
-    		break;
-    	}*/
+    	}
     	return retorno;
     }
    
     public static JRadioButton getRadioButtonForNamePosgrado(ButtonGroup grupo, String name) {
     	JRadioButton retorno = null;
-    	Enumeration<AbstractButton> e = grupo.getElements();
-    	switch(name) {
-    	case "ninguno":
-    		retorno = (JRadioButton) e.nextElement();
-    	case "magister":
-    		e.nextElement();
-    		retorno = (JRadioButton) e.nextElement();
-    		break;
-    	case "doctor":
-    		e.nextElement();
-    		e.nextElement();
-    		retorno = (JRadioButton) e.nextElement();
-    		break;
+    	String funcion1 = "ninguno",funcion2 = "magister";
+    	Iterator<AbstractButton> it = grupo.getElements().asIterator();
+    	if (name.compareTo(funcion1)==0)
+    		retorno = (JRadioButton) it.next();
+    	else {
+    		it.next();
+    		if (name.compareTo(funcion2)==0)
+    			retorno = (JRadioButton) it.next();
+    		else {
+    			it.next();
+    			retorno = (JRadioButton) it.next();
+    		}
     	}
     	return retorno;
     }

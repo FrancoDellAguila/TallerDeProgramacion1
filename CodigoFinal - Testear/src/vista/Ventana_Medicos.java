@@ -47,11 +47,14 @@ public class Ventana_Medicos extends JFrame implements  KeyListener , IVistaMedi
 	private JButton btnEliminar;
 	private JButton btnAgregar;
 	private JList<IMedico>listMedicos;
+	
+
 	private DefaultListModel<IMedico> listModel = new DefaultListModel<IMedico>();
 	private ButtonGroup grupoEspecialidad = new ButtonGroup();
 	private ButtonGroup grupoContratacion = new ButtonGroup();
 	private ButtonGroup grupoPosgrado = new ButtonGroup();
 	private JTextField textFieldMatricula;
+	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	/**
 	 * Constructor sin parametros que crea la ventana Medicos
@@ -314,15 +317,6 @@ public class Ventana_Medicos extends JFrame implements  KeyListener , IVistaMedi
 		this.actulizarLista();
 		this.setVisible(true);
 		
-		//seteo nombres
-		this.btnAgregar.setName("botonAgregar");
-		this.btnEliminar.setName("botonEliminar");
-		this.textFieldNombre.setName("jtNombre");
-		this.textFieldApellido.setName("jtApellido");
-		this.textFieldDomicilio.setName("jtDomicilio");
-		this.textFieldCiudad.setName("jtCiudad");
-		this.textFieldTelefono.setName("jtTelefono");
-		this.textFieldMatricula.setName("jtMatricula");
 	}
 	
 	/**
@@ -544,7 +538,11 @@ public class Ventana_Medicos extends JFrame implements  KeyListener , IVistaMedi
 		return textFieldMatricula;
 	}
 
+	public DefaultListModel<IMedico> getListModel() {
+		return listModel;
+	}
 
-	
-
+	public JList<IMedico> getListMedicos() {
+		return listMedicos;
+	}
 }
