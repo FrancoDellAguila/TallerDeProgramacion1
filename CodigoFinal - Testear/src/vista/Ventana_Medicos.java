@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Enumeration;
 
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -46,11 +47,14 @@ public class Ventana_Medicos extends JFrame implements  KeyListener , IVistaMedi
 	private JButton btnEliminar;
 	private JButton btnAgregar;
 	private JList<IMedico>listMedicos;
+	
+
 	private DefaultListModel<IMedico> listModel = new DefaultListModel<IMedico>();
 	private ButtonGroup grupoEspecialidad = new ButtonGroup();
 	private ButtonGroup grupoContratacion = new ButtonGroup();
 	private ButtonGroup grupoPosgrado = new ButtonGroup();
 	private JTextField textFieldMatricula;
+	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	/**
 	 * Constructor sin parametros que crea la ventana Medicos
@@ -312,6 +316,7 @@ public class Ventana_Medicos extends JFrame implements  KeyListener , IVistaMedi
 		
 		this.actulizarLista();
 		this.setVisible(true);
+		
 	}
 	
 	/**
@@ -471,7 +476,6 @@ public class Ventana_Medicos extends JFrame implements  KeyListener , IVistaMedi
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		boolean condicionE = !this.listMedicos.isSelectionEmpty();
-		
 		this.btnEliminar.setEnabled(condicionE);
 	}
 
@@ -485,7 +489,59 @@ public class Ventana_Medicos extends JFrame implements  KeyListener , IVistaMedi
 	public void mouseExited(MouseEvent e) {
 	}
 
+	public ButtonGroup getGrupoEspecialidad() {
+		return grupoEspecialidad;
+	}
 
-	
+	public ButtonGroup getGrupoContratacion() {
+		return grupoContratacion;
+	}
 
+	public ButtonGroup getGrupoPosgrado() {
+		return grupoPosgrado;
+	}
+
+	public JTextField getTextFieldNombre() {
+		return textFieldNombre;
+	}
+
+	public JTextField getTextFieldApellido() {
+		return textFieldApellido;
+	}
+
+	public JTextField getTextFieldDni() {
+		return textFieldDni;
+	}
+
+	public JTextField getTextFieldDomicilio() {
+		return textFieldDomicilio;
+	}
+
+	public JTextField getTextFieldCiudad() {
+		return textFieldCiudad;
+	}
+
+	public JTextField getTextFieldTelefono() {
+		return textFieldTelefono;
+	}
+
+	public JButton getBtnEliminar() {
+		return btnEliminar;
+	}
+
+	public JButton getBtnAgregar() {
+		return btnAgregar;
+	}
+
+	public JTextField getTextFieldMatricula() {
+		return textFieldMatricula;
+	}
+
+	public DefaultListModel<IMedico> getListModel() {
+		return listModel;
+	}
+
+	public JList<IMedico> getListMedicos() {
+		return listMedicos;
+	}
 }
