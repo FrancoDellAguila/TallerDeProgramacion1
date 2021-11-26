@@ -18,7 +18,7 @@ public enum Mensajes
 
     public void setValor(String valor)
     {
-	this.valor = valor;
+    	this.valor = valor;
     }
     
 

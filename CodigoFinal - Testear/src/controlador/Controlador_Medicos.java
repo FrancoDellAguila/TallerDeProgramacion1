@@ -18,6 +18,7 @@ import util.Mensajes;
 import vista.IVistaMedico;
 import vista.IVistaPaciente;
 import vista.Ventana_Medicos;
+import vista.Ventana_Menu;
 import vista.Ventana_Pacientes;
 /**
  * @author Betti Francisco, Kollman Deborah, Stimmler Francisco, Veitch Matias
@@ -70,7 +71,7 @@ public class Controlador_Medicos implements ActionListener, WindowListener{
 	}
 	@Override
 	public void windowClosed(WindowEvent e) {
-		// TODO Auto-generated method stub
+		
 
 	}
 	@Override
@@ -93,8 +94,8 @@ public class Controlador_Medicos implements ActionListener, WindowListener{
 		// TODO Auto-generated method stub
 
 	}
-	public IVistaMedico getVista() {
-		return vista;
+	public Ventana_Medicos getVista() {
+		return (Ventana_Medicos) vista;
 	}
 
     public void setOp(InterfazOptionPanel op)

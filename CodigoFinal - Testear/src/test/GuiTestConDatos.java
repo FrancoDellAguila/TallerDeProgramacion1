@@ -11,6 +11,7 @@ import javax.swing.JList;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -52,6 +53,11 @@ public class GuiTestConDatos {
 		Clinica.getInstance().addMedico(new Medico("20202020", "aaa", "bbb", "ccc", "ddd", "19999999", 2));
     }
 
+    @After
+    public void tearDown() throws Exception
+    {
+        controlador.getVista().setVisible(false);
+    }
     
     @Test
     public void testCantidad()
@@ -130,58 +136,7 @@ public class GuiTestConDatos {
         Assert.assertEquals("Debería haber un elemento mas que antes", 5, Clinica.getInstance().getMedicos().size());
     }
     
-    @Test
-    public void testErrorMatricula()
-    {
-        robot.delay(TestUtils.getDelay());
-        //obtengo las referencias a los componentes necesarios
-        JButton abrirMedicos = controladorMenu.getVista().getBtnMedicos();
-        JTextField nombre = controlador.getVista().getTextFieldNombre();
-        JTextField apellido = controlador.getVista().getTextFieldApellido();
-        JTextField dni = controlador.getVista().getTextFieldDni();
-        JTextField domicilio = controlador.getVista().getTextFieldDomicilio();
-        JTextField ciudad = controlador.getVista().getTextFieldCiudad();
-        JTextField telefono = controlador.getVista().getTextFieldTelefono();
-        JTextField matricula = controlador.getVista().getTextFieldMatricula();
-        
-        ButtonGroup especialidad = controlador.getVista().getGrupoEspecialidad();
-        ButtonGroup contratacion = controlador.getVista().getGrupoContratacion();
-        ButtonGroup posgrado = controlador.getVista().getGrupoPosgrado();
-        JRadioButton clinica = (JRadioButton) TestUtils.getRadioButtonForNameEspecialidad(especialidad,"clinica");
-        JRadioButton permanente = (JRadioButton) TestUtils.getRadioButtonForNameContratacion(contratacion,"residente");
-        JRadioButton ninguno = (JRadioButton) TestUtils.getRadioButtonForNamePosgrado(posgrado,"ninguno");
-        
-        JButton agregar = controlador.getVista().getBtnAgregar();
-        //lleno los JTextField
-        TestUtils.clickComponent(abrirMedicos, robot);
-        robot.delay(TestUtils.getDelay());
-        especialidad.clearSelection();
-        TestUtils.clickComponent(clinica, robot);
-        contratacion.clearSelection();
-        TestUtils.clickComponent(permanente, robot);
-        posgrado.clearSelection();
-        TestUtils.clickComponent(ninguno, robot);
-        TestUtils.clickComponent(nombre, robot);
-        TestUtils.tipeaTexto("Guille", robot);
-        TestUtils.clickComponent(apellido, robot);
-        TestUtils.tipeaTexto("Guccione", robot);
-        TestUtils.clickComponent(dni, robot);
-        TestUtils.tipeaTexto("12345678", robot);
-        TestUtils.clickComponent(domicilio, robot);
-        TestUtils.tipeaTexto("juanBjusto", robot);
-        TestUtils.clickComponent(ciudad, robot);
-        TestUtils.tipeaTexto("Mar del Plata", robot);
-        TestUtils.clickComponent(telefono, robot);
-        TestUtils.tipeaTexto("2235678912", robot);
-        TestUtils.clickComponent(matricula, robot);
-        TestUtils.tipeaTexto("abc", robot);
-        
-        //verifico los resultados
-        TestUtils.clickComponent(agregar, robot);
-
-        Assert.assertEquals("Mensaje incorrecto, debería decir "+Mensajes.ERROR_MATRICULA_INCORRECTA.getValor(),Mensajes.ERROR_MATRICULA_INCORRECTA.getValor(),op.getMensaje());
-        
-    }
+    
     @Test
     public void testCompletoErrorDni()
     {
@@ -231,5 +186,57 @@ public class GuiTestConDatos {
         TestUtils.clickComponent(agregar, robot);
         //verifico los resultados
         Assert.assertEquals("No se deberia agregar", 4, Clinica.getInstance().getMedicos().size());
+    }
+    
+    @Test
+    public void testErrorMatricula()
+    {
+    	robot.delay(TestUtils.getDelay());
+    	//obtengo las referencias a los componentes necesarios
+        JButton abrirMedicos = controladorMenu.getVista().getBtnMedicos();
+        JTextField nombre = controlador.getVista().getTextFieldNombre();
+        JTextField apellido = controlador.getVista().getTextFieldApellido();
+        JTextField dni = controlador.getVista().getTextFieldDni();
+        JTextField domicilio = controlador.getVista().getTextFieldDomicilio();
+        JTextField ciudad = controlador.getVista().getTextFieldCiudad();
+        JTextField telefono = controlador.getVista().getTextFieldTelefono();
+        JTextField matricula = controlador.getVista().getTextFieldMatricula();
+        
+        ButtonGroup especialidad = controlador.getVista().getGrupoEspecialidad();
+        ButtonGroup contratacion = controlador.getVista().getGrupoContratacion();
+        ButtonGroup posgrado = controlador.getVista().getGrupoPosgrado();
+        JRadioButton clinica = (JRadioButton) TestUtils.getRadioButtonForNameEspecialidad(especialidad,"clinica");
+        JRadioButton permanente = (JRadioButton) TestUtils.getRadioButtonForNameContratacion(contratacion,"residente");
+        JRadioButton ninguno = (JRadioButton) TestUtils.getRadioButtonForNamePosgrado(posgrado,"ninguno");
+        
+        JButton agregar = controlador.getVista().getBtnAgregar();
+        //lleno los JTextField
+        TestUtils.clickComponent(abrirMedicos, robot);
+        robot.delay(TestUtils.getDelay());
+        especialidad.clearSelection();
+        TestUtils.clickComponent(clinica, robot);
+        contratacion.clearSelection();
+        TestUtils.clickComponent(permanente, robot);
+        posgrado.clearSelection();
+        TestUtils.clickComponent(ninguno, robot);
+        TestUtils.clickComponent(nombre, robot);
+        TestUtils.tipeaTexto("Guille", robot);
+        TestUtils.clickComponent(apellido, robot);
+        TestUtils.tipeaTexto("Guccione", robot);
+        TestUtils.clickComponent(dni, robot);
+        TestUtils.tipeaTexto("12345678", robot);
+        TestUtils.clickComponent(domicilio, robot);
+        TestUtils.tipeaTexto("juanBjusto", robot);
+        TestUtils.clickComponent(ciudad, robot);
+        TestUtils.tipeaTexto("Mar del Plata", robot);
+        TestUtils.clickComponent(telefono, robot);
+        TestUtils.tipeaTexto("2235678912", robot);
+        TestUtils.clickComponent(matricula, robot);
+        TestUtils.tipeaTexto("abc", robot);
+        
+        //verifico los resultados
+        TestUtils.clickComponent(agregar, robot);
+        
+        Assert.assertEquals("Mensaje incorrecto, debería decir "+Mensajes.ERROR_MATRICULA_INCORRECTA.getValor(),Mensajes.ERROR_MATRICULA_INCORRECTA.getValor(),op.getMensaje());
     }
 }

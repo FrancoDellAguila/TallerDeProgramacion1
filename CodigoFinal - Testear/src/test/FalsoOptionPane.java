@@ -19,4 +19,5 @@ public class FalsoOptionPane implements InterfazOptionPanel {
     public String getMensaje() {
         return mensaje;
     }
+
 }

@@ -3,6 +3,8 @@ package test;
 import controlador.Controlador_Medicos;
 import controlador.Controlador_Menu;
 import decorators.IMedico;
+import modelo.Clinica;
+import modelo.Medico;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -40,14 +42,14 @@ public class GuiTestEnabledDisabled
     {
         controlador = new Controlador_Medicos();
         controladorMenu = new Controlador_Menu();
-        
+        Clinica.getInstance().addMedico(new Medico("30303030", "aaa", "bbb", "ccc", "ddd", "19999999",1));
     }
-/*
+
     @After
     public void tearDown() throws Exception
     {
-        controlador.getVista().;
-    }*/
+        controlador.getVista().setVisible(false);
+    }
 
     @Test
     public void testVacio()
@@ -537,7 +539,8 @@ public class GuiTestEnabledDisabled
         TestUtils.tipeaTexto("123", robot);
         //verifico los resultados
         robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());
-        System.out.print(controlador.getVista().getBtnAgregar().isEnabled());
+        
+        System.out.print(agregar);
         Assert.assertTrue("El boton de registro deberia estar hablitado", agregar.isEnabled());
         Assert.assertFalse("El boton de eliminar deberia estar deshablitado", eliminar.isEnabled());
     }
@@ -589,7 +592,7 @@ public class GuiTestEnabledDisabled
         TestUtils.clickComponent(matricula, robot);
         TestUtils.tipeaTexto("123", robot);
         //verifico los resultados
-        Assert.assertTrue("El boton de registro deberia estar hablitado", agregar.isEnabled());
+        Assert.assertFalse("El boton de registro deberia estar deshablitado", agregar.isEnabled());
         Assert.assertFalse("El boton de eliminar deberia estar deshablitado", eliminar.isEnabled());
     }
     
@@ -661,8 +664,9 @@ public class GuiTestEnabledDisabled
         robot.delay(TestUtils.getDelay());
 
         TestUtils.clickComponent(listmedicos, robot);
-        TestUtils.clickComponent(eliminar, robot);
+        robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());
         Assert.assertFalse("El boton de agregar deberia estar deshablitado", agregar.isEnabled());
+        System.out.println(eliminar);
         Assert.assertTrue("El boton de eliminar deberia estar hablitado", eliminar.isEnabled());
     }
 }
