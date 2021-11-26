@@ -63,7 +63,7 @@ public class TestClinicaConDatos {
 	@Test
 	public void testAddPacienteNuevo() {
 		try {
-			Paciente p2 = new Paciente("29999999", "aaa", "bbb", "ccc", "ddd", "29999999", 1);
+			Paciente p2 = new Paciente("29999999", "aaa", "bbb", "ccc", "ddd", "29999999", 2);
 			Clinica.getInstance().addPaciente(p2);
 			Paciente p3 = Clinica.getInstance().getPaciente("29999999");
 			assertEquals(p3, p2);
@@ -105,7 +105,7 @@ public class TestClinicaConDatos {
 		Paciente p2 = new Paciente("29999999", "aaa", "bbb", "ccc", "ddd", "29999999", 9);
 		Clinica.getInstance().Ingreso(p2);
 		Clinica.getInstance().Atencion();
-		assertNull(Clinica.getInstance().getSalaPrivada());
+		assertNull(Clinica.getInstance().getSalaPrivada()); //se testea si salaPrivada es igual a null ya que siguiendo el codigo se puede ver que si el paciente que se va a atender es el de sala privada entonces se lo pone en null
 	}
 	
 	@Test
@@ -135,6 +135,19 @@ public class TestClinicaConDatos {
 		} catch (NoEstaPacienteException e) {
 			Assert.fail("no deberia haber lanzado la excepcion");
 		}
+	}
+	
+	@Test 
+	public void testEgresoYFacutracionConPacienteSinPrestacion() { //va a arrojar error ya que no tiene tratamiento para pestaciones=null
+		try {
+			Paciente p2 = new Paciente("29999999", "aaa", "bbb", "ccc", "ddd", "29999999", 9);
+			Clinica.getInstance().Ingreso(p2);
+			Clinica.getInstance().Atencion();
+			Clinica.getInstance().EgresoYFacturacion(p2, null);
+		} catch (NoEstaPacienteException e) {
+			Assert.fail();
+		}
+		
 	}
 	
 	@Test 
