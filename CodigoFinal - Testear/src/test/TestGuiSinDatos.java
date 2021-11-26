@@ -60,7 +60,7 @@ public class TestGuiSinDatos
     @Test
     public void testCantidad()
     {
-        Assert.assertEquals("Debe haber 0 usuarios registrados", 0, Clinica.getInstance().getMedicos().size());
+        Assert.assertEquals("Debe haber 0 médicos registrados", 0, Clinica.getInstance().getMedicos().size());
     }
     
     @Test
@@ -268,6 +268,7 @@ public class TestGuiSinDatos
         //verifico los resultados
         TestUtils.clickComponent(agregar, robot);
         Assert.assertEquals("Mensaje incorrecto, debería decir "+Mensajes.ERROR_MATRICULA_INCORRECTA.getValor(),Mensajes.ERROR_MATRICULA_INCORRECTA.getValor(),op.getMensaje());
+        Assert.assertEquals("No se deberia agregar", 0, Clinica.getInstance().getMedicos().size());
         robot.keyPress(KeyEvent.VK_ENTER);
     }
     
