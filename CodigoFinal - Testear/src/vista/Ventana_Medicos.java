@@ -476,7 +476,6 @@ public class Ventana_Medicos extends JFrame implements  KeyListener , IVistaMedi
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		boolean condicionE = !this.listMedicos.isSelectionEmpty();
-		
 		this.btnEliminar.setEnabled(condicionE);
 	}
 

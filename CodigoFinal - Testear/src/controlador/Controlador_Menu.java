@@ -39,7 +39,6 @@ public class Controlador_Menu implements ActionListener,WindowListener{
 			this.vista.cerrar();
 		} else if(e.getActionCommand().equals("Medicos")) {
 			Controlador_Medicos controlador_medicos= new Controlador_Medicos();
-			//this.setControlador_medicos(new Controlador_Medicos());
 			this.vista.cerrar();
 		} 
 		
@@ -119,16 +118,6 @@ public class Controlador_Menu implements ActionListener,WindowListener{
 
 	public IVistaMenu getVista() {
 		return vista;
-	}
-
-
-	public Controlador_Medicos getControlador_medicos() {
-		return controlador_medicos;
-	}
-
-
-	public void setControlador_medicos(Controlador_Medicos controlador_medicos) {
-		this.controlador_medicos = controlador_medicos;
 	}
 
 }

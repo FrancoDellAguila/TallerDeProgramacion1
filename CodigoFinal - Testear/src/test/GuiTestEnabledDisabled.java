@@ -42,12 +42,11 @@ public class GuiTestEnabledDisabled
     @Before
     public void setUp() throws Exception
     {
-    	Clinica.getInstance().addMedico(new Medico("30303030", "aaa", "bbb", "ccc", "ddd", "19999999",1));
+    	//Clinica.getInstance().addMedico(new Medico("30303030", "aaa", "bbb", "ccc", "ddd", "19999999",1));
         controladorMenu = new Controlador_Menu();
         controlador = new Controlador_Medicos();
         JButton abrirMedicos = controladorMenu.getVista().getBtnMedicos();
         TestUtils.clickComponent(abrirMedicos, robot);
-        
     }
 
     @After
@@ -240,7 +239,6 @@ public class GuiTestEnabledDisabled
         robot.delay(TestUtils.getDelay());
         especialidad.clearSelection();
         TestUtils.clickComponent(cirugia, robot);
-        robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());
         //verifico los resultados
         Assert.assertFalse("El boton de registro deberia estar deshablitado", agregar.isEnabled());
         Assert.assertFalse("El boton de eliminar deberia estar deshablitado", eliminar.isEnabled());
@@ -312,7 +310,7 @@ public class GuiTestEnabledDisabled
         robot.delay(TestUtils.getDelay());
         //obtengo las referencias a los componentes necesarios
         
-        ButtonGroup posgrado = controlador.getVista().getGrupoContratacion();
+        ButtonGroup posgrado = controlador.getVista().getGrupoPosgrado();
         JRadioButton ninguno = (JRadioButton) TestUtils.getRadioButtonForNamePosgrado(posgrado,"ninguno");
         JButton agregar = controlador.getVista().getBtnAgregar();
         JButton eliminar = controlador.getVista().getBtnEliminar();
@@ -332,7 +330,7 @@ public class GuiTestEnabledDisabled
         robot.delay(TestUtils.getDelay());
         //obtengo las referencias a los componentes necesarios
         
-        ButtonGroup posgrado = controlador.getVista().getGrupoContratacion();
+        ButtonGroup posgrado = controlador.getVista().getGrupoPosgrado();
         JRadioButton magister = (JRadioButton) TestUtils.getRadioButtonForNamePosgrado(posgrado,"magister");
         JButton agregar = controlador.getVista().getBtnAgregar();
         JButton eliminar = controlador.getVista().getBtnEliminar();
@@ -352,7 +350,7 @@ public class GuiTestEnabledDisabled
         robot.delay(TestUtils.getDelay());
         //obtengo las referencias a los componentes necesarios
         
-        ButtonGroup posgrado = controlador.getVista().getGrupoContratacion();
+        ButtonGroup posgrado = controlador.getVista().getGrupoPosgrado();
         JRadioButton doctor = (JRadioButton) TestUtils.getRadioButtonForNamePosgrado(posgrado,"doctor");
         JButton agregar = controlador.getVista().getBtnAgregar();
         JButton eliminar = controlador.getVista().getBtnEliminar();
@@ -652,28 +650,6 @@ public class GuiTestEnabledDisabled
     }
     
     @Test
-    public void testBorraMedico()
-    {
-    	robot.delay(TestUtils.getDelay());
-    	//obtengo las referencias a los componentes necesarios
-    	
-    
-    	
-        robot.delay(TestUtils.getDelay());
-    	
-    	JList<IMedico> listmedicos = controlador.getVista().getListMedicos();
-    	
-    	JButton agregar = controlador.getVista().getBtnAgregar();
-        JButton eliminar = controlador.getVista().getBtnEliminar();
-        
-        TestUtils.clickComponent(listmedicos, robot);
-        robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());
-        Assert.assertFalse("El boton de agregar deberia estar deshabilitado", agregar.isEnabled());
-        System.out.println(eliminar.isEnabled());
-        Assert.assertTrue("El boton de eliminar deberia estar habilitado", eliminar.isEnabled());
-    }
-    
-    @Test
     public void testErrorMatricula()
     {
     	robot.delay(TestUtils.getDelay());
@@ -719,10 +695,9 @@ public class GuiTestEnabledDisabled
         TestUtils.tipeaTexto("2235678912", robot);
         TestUtils.clickComponent(matricula, robot);
         TestUtils.tipeaTexto("abc", robot);
-        
+
         //verifico los resultados
         TestUtils.clickComponent(agregar, robot);
-        robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());robot.delay(TestUtils.getDelay());
         Assert.assertTrue("El boton de agregar deberia estar habilitado", agregar.isEnabled());
         Assert.assertFalse("El boton de eliminar deberia estar deshabilitado", eliminar.isEnabled());
         robot.keyPress(KeyEvent.VK_ENTER);
